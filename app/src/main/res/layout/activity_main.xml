@@ -5,17 +5,19 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
-    android:background="@drawable/town">
+    android:background="@drawable/News">
+
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:adjustViewBounds="false"
         android:scaleType="centerCrop"
-        android:src="@drawable/town"
-        app:srcCompat="@drawable/town" />
-
+        android:src="@drawable/News"
+        app:srcCompat="@drawable/News" />
 
     <TextView
         android:id="@+id/appNameTextView"
@@ -35,17 +37,17 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find News"
+        android:text="Search News"
         android:id="@+id/locationEditText"
         android:background="@color/black"
-        android:layout_above="@+id/findRestaurantsButton"
+        android:layout_above="@+id/findNewsButton"
         android:layout_marginBottom="10dp"
         android:padding="5dp"
         android:hint="Enter Zip Code"
         android:layout_centerHorizontal="true"/>
 
     <Button
-        android:id="@+id/findRestaurantsButton"
+        android:id="@+id/findNewsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
