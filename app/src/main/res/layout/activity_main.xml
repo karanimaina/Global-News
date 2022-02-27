@@ -4,5 +4,16 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
-<!--    android:background="@drawable/">-->
->
+    android:background="@drawable/">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="false"
+        android:scaleType="centerCrop"
+        android:src="@drawable/town"
+        app:srcCompat="@drawable/town" />
+
+</RelativeLayout>
+
