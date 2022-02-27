@@ -57,3 +57,9 @@ android {
         implementation 'com.jakewharton:butterknife:10.2.0'
         annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
     }}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+}
