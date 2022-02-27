@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
-    android:background="@drawable/News">
+    android:background="@drawable/news">
 
 
     <ImageView
@@ -16,8 +16,8 @@
         android:layout_alignParentTop="true"
         android:adjustViewBounds="false"
         android:scaleType="centerCrop"
-        android:src="@drawable/News"
-        app:srcCompat="@drawable/News" />
+        android:src="@drawable/news"
+        app:srcCompat="@drawable/news" />
 
     <TextView
         android:id="@+id/appNameTextView"
