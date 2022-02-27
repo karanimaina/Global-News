@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v == FindNewsButton) {
             String News = LocationEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, News.class);
+            Intent intent = new Intent(MainActivity.this, NewsActivity.class);
             intent.putExtra("News", News);
             startActivity(intent);
         }}

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GlobalNews">
         <activity
-            android:name=".News"
+            android:name=".NewsActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
