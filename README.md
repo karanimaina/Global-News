@@ -12,6 +12,7 @@ This is an android application that helps users  get  news headlines across the 
 <li>nnavigate to the bin  folder </li>
 <li>type ./studio.sh to launch the android idea environment </li>
 <li>Open the project</li>
+
 ## BDD
 <li>On the test change the run method  to main activty test and run the test</li>
 <li>Setup the emulator either as your phone by enabling the usb debugging in your developer settings or by using a custom  AVD device</li>
