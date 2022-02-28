@@ -20,6 +20,7 @@ This is an android application that helps users  get  news headlines across the 
 <li>change it to instrumentation tests , confirm that the test do pass</li>
 <li>change it to App , run  it , enter some text on the activity that shows i  and clck on the find news BUtton</li>
 <li> an activity opens and you are able to see  th hard coded News </li>
+
 ## Tests
 run the main actvity test, this tests on the App name and perform on click method that moves you to the next activity.
 run instrumentation test, this test if , the funnstionality employed are functional
