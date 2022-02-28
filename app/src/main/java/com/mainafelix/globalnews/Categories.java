@@ -4,7 +4,6 @@ public class Categories {
         public String getCategory;
         private String category;
         private String categoryImageUrl;
-
         public Categories(String category, String categoryImageUrl) {
             this.category = category;
             this.categoryImageUrl = categoryImageUrl;
