@@ -23,12 +23,12 @@ public class MainActivityInstrumentationTest {
 
     @Test
     public void validateEditText() {
-        onView(withId(R.id.locationEditText)).perform(typeText("Nairobi"))
+        onView(withId(R.id.locationEditText)).perform(typeText("Kenya"))
                 .check(matches(withText("Kenya")));
     }
     @Test
-    public void locationIsSentToRestaurantsActivity(){
-        String country = "Ukraine";
+    public void CountryIsSentToNewsActivity(){
+        String country = "Kenya";
         onView(withId(R.id.locationEditText)).perform(typeText(country)).perform(closeSoftKeyboard());
         try {                             // the sleep method requires to be checked and handled so we use try block
             Thread.sleep(250);
@@ -37,5 +37,5 @@ public class MainActivityInstrumentationTest {
         }
         onView(withId(R.id.findNewsButton)).perform(click());
         onView(withId(R.id.newsTextView)).check(matches
-                (withText("Here are all the news: " + country)));
+                (withText("Current headlines" + country)));
     }}
