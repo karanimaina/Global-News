@@ -12,7 +12,8 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="64dp"
-        android:text="Current headlines" />
+        android:text="Current headlines"
+        android:visibility="gone"/>
 
     <ListView
         android:id="@+id/listView"
@@ -20,7 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/newsTextView"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:visibility="gone"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
