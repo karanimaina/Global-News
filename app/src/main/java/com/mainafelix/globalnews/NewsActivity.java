@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +33,10 @@ public class NewsActivity extends AppCompatActivity {
     private ArrayList<Articles> articlesArrayList;
     //private String[]articles = new String[] {"Why is affordable housing plan favouring employed Kenyans?", "Covid -19 crisis", "Inter-country wars between Ukraine and russia", "NASA discovers a black hole in space", "How to handle poverty crisis", "Economy bulletin :" };
     //private String[]news = new String[] {"government has imposed a percentage monthly deduction to provide affordable housing  to citizens","due to the upsurge of covid19 citizens are advised to wear mask and sanitize regularly","war intensifies in areas around kiev ukraine,putin  declares that ukraine should not be regarded as a country ,", "Scientist are digging more on the causes o n the origin of  the black hole", "To solve crisis the government should  make free education available to all, people need skills",  "Gold prices lower due to the ongoing crisis between ukraine and  russia" };
-
+    private static final String TAG1 = NewsActivity.class.getSimpleName();
+    @BindView(R.id.errorTextView) TextView errorTextView;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +63,7 @@ Call<News> call = client.getAllNews(country,"News");
         call.enqueue(new Callback<News>(){
           @Override
           public void onResponse(Call<News> call, Response<News> response) {
+              hideProgressBar();
               if (response.isSuccessful()) {
                   List<Articles> articles = response.body().getArticles();
                   for (int i = 0; i < articles.size(); i++) {
@@ -66,16 +71,42 @@ Call<News> call = client.getAllNews(country,"News");
                   }
                   ArrayAdapter adapter = new globalNewsAdapter(NewsActivity.this,android.R.layout.simple_list_item_1,articles);
                   listView.setAdapter(adapter);
-              }}
+                  showNews();
+              }else {
+                  showUnsuccessfulMessage();
+              }
+          }
 
           @Override
           public void onFailure(Call<News> call, Throwable t) {
               Toast.makeText(NewsActivity.this,"Fail to get news",Toast.LENGTH_SHORT).show();
+              Log.e("Error Message", "onFailure: ",t );
+              hideProgressBar();
+              showFailureMessage();
           }
       });
 
 
 
             }
+    private void showFailureMessage() {
+        errorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
+        errorTextView.setVisibility(View.VISIBLE);
     }
+
+    private void showUnsuccessfulMessage() {
+        errorTextView.setText("Something went wrong. Please try again later");
+        errorTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void showNews() {
+        listView.setVisibility(View.VISIBLE);
+        newsTextView.setVisibility(View.VISIBLE);
+    }
+
+    private void hideProgressBar() {
+        progressBar.setVisibility(View.GONE);
+    }
+
+
 }
