@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +64,8 @@ Call<News> call = client.getAllNews(country,"News");
                   for (int i = 0; i < articles.size(); i++) {
                       articlesArrayList.add(new Articles(articles.get(i).getTitle(), articles.get(i).getDescription(), articles.get(i).getUrlToImage(), articles.get(i).getUrl(), articles.get(i).getContent()));
                   }
+                  ArrayAdapter adapter = new MyNewsArrayAdapter(NewsActivity.this,android.R.layout.simple_list_item_1,articles);
+                  listView.setAdapter(adapter);
               }}
 
           @Override
