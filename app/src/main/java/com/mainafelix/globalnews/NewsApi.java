@@ -6,7 +6,7 @@ import retrofit2.http.Url;
 
 public interface NewsApi {
     @GET
-    Call<News> getAllNews(@Url String url);
+    Call<News> getAllNews(String country, @Url String url);
 
     @GET
     Call<News>getNewsByCategory(@Url String Categoryurl);
