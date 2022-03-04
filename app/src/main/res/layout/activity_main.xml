@@ -43,7 +43,7 @@
         android:layout_above="@+id/findNewsButton"
         android:layout_marginBottom="10dp"
         android:padding="5dp"
-        android:hint="Enter Country name"
+        android:hint="search"
         android:layout_centerHorizontal="true"/>
 
     <Button

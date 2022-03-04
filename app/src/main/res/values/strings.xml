@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GlobalNews</string>
+    <String name="api_key">d3c99edb0d284cf8a2c6ef4af4bb2987</String>
 </resources>
