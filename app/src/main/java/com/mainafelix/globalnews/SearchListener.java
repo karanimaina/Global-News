@@ -1,4 +1,4 @@
 package com.mainafelix.globalnews;
 
-public class CustomAdapter {
+public interface SearchListener {
 }
