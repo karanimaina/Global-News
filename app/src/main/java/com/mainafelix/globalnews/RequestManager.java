@@ -24,7 +24,7 @@ public class RequestManager {
 
     public void  getNewsHeadlines(OnFetchDataListener listener,String category,String query){
         CallNewsApi  callNewsApi = retrofit.create(CallNewsApi.class);
-        Call<NewsCollection> call = callNewsApi.callHeadlines("sa",category,query,NEWS_API_KEY);
+        Call<NewsCollection>call = callNewsApi.callHeadlines("sa",category,query,NEWS_API_KEY);
         try{
             call.enqueue(new Callback<NewsCollection>() {
                 @Override
@@ -56,3 +56,4 @@ public class RequestManager {
                 @Query("apiKey")String api_key);
     }
 }
+
