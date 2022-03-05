@@ -2,6 +2,7 @@ package com.mainafelix.globalnews;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
@@ -14,13 +15,15 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class globalNewsAdapter extends RecyclerView.Adapter<GlobalViewHolder> {
+public class globalNewsAdapter extends RecyclerView.Adapter<GlobalViewHolder> implements SelectListener{
     private Context context;
     private List<Article> headlines;
+    private SelectListener listener;
 
-    public globalNewsAdapter(Context context, List<Article> heeadlines) {
+    public globalNewsAdapter(Context context, List<Article> headlines, SelectListener listener) {
         this.context = context;
-        this.headlines = heeadlines;
+        this.headlines = headlines;
+        this.listener = listener;
     }
 
     @NonNull
@@ -36,10 +39,22 @@ public class globalNewsAdapter extends RecyclerView.Adapter<GlobalViewHolder> {
         if (headlines.get(position).getUrlToImage()!= null){
             Picasso.get().load(headlines.get(position).getUrlToImage()).into(holder.img_headline);
         }
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.OnNewsClick(headlines.get(holder.getAdapterPosition()));
+            }
+        });
+
     }
 
     @Override
     public int getItemCount() {
         return  headlines.size();
+    }
+
+    @Override
+    public void OnNewsClick(Article headlines) {
+
     }
 }
