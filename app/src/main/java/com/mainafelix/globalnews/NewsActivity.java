@@ -1,6 +1,10 @@
 package com.mainafelix.globalnews;
 
+import static com.mainafelix.globalnews.Constants.NEWS_API_KEY;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,6 +33,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewsActivity extends AppCompatActivity {
+    RecyclerView recyclerView;
+    CustomAdapter adapter;
     public static final String TAG = NewsActivity.class.getSimpleName();
     @BindView(R.id.newsTextView)
     TextView newsTextView;
@@ -73,34 +79,28 @@ public class NewsActivity extends AppCompatActivity {
         Intent intent = getIntent();// recreating sn intent
         String q = intent.getStringExtra("search");//fetching the data fom the intent
         newsTextView.setText("Current headlines:" + q);//set text updates the text on LocationTextView to include the text+ defined location,
-//
-        NewsApi client = NewsClient.getClient();
-        Call<NewsCollection> call = client.getArticle("us");
-        call.enqueue(new Callback<NewsCollection>() {
-            @Override
-            public void onResponse(Call<NewsCollection> call, Response<NewsCollection> response) {
-                hideProgressBar();
-                if (response.isSuccessful()) {
-                    List<Article> articlesList = response.body().getArticles();
-                    String[] newsArticles = new String[articlesList.size()];
-                    for (int i = 0; i < newsArticles.length; i++) {
-                        newsArticles[i] = articlesList.get(i).getTitle();
-                    }
-                    ArrayAdapter adapter = new globalNewsAdapter(NewsActivity.this, android.R.layout.simple_list_item_1, newsArticles);
-                    listView.setAdapter(adapter);
-                    showArticles();
-                } else {
-                    showUnsuccessfulMessage();
-                }
-            }
+        RequestManager manager = new RequestManager(this);
+        manager.getNewsHeadlines(listener,"general",null);
+    }
+    private final OnFetchDataListener<NewsCollection>listener = new OnFetchDataListener<NewsCollection>() {
+        @Override
+        public void OnFetchData(List<Article> list, String message) {
+            showNews(list);
+        }
 
-            @Override
-            public void onFailure(Call<NewsCollection> call, Throwable t) {
-                Log.e("Error Message", "onFailure: ", t);
-                hideProgressBar();
-                showFailureMessage();
-            }
-        });
+        @Override
+        public void OnError(String message) {
+
+        }
+    };
+
+    private void showNews(List<Article> list) {
+        recyclerView = findViewById(R.id.recycler_main);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,1));
+        adapter = new CustomAdapter(this, list);
+        recyclerView.setAdapter(adapter);
+
     }
 }
 
