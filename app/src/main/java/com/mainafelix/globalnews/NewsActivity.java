@@ -107,8 +107,13 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
 
     }
 
+    @Override
+    public void OnNewsClick(Article headlines) {
+        startActivity(new Intent(NewsActivity.this,NewsDetailActivity.class)
+                .putExtra("Data",headlines)
+        );
 
-
+    }
 
     @Override
     public void onClick(View view) {
@@ -119,12 +124,5 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener,category,null);
 
-    }
-
-    @Override
-    public void OnNewsClick(Article headlines) {
-    startActivity(new Intent(NewsActivity.this,NewsDetailActivity.class)
-            .putExtra("Data",headlines)
-    );
     }
 }
