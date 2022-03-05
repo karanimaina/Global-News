@@ -30,7 +30,7 @@ public class globalNewsAdapter extends RecyclerView.Adapter<GlobalViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull GlobalViewHolder holder, int position) {
-    holder.t
+    holder.te
     }
 
     @Override

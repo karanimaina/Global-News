@@ -43,7 +43,6 @@
             android:scaleType="centerCrop"
             android:layout_weight="1"
             android:src="@drawable/available">
-
         </ImageView>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
