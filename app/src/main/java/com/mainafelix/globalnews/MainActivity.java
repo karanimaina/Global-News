@@ -1,42 +1,43 @@
 package com.mainafelix.globalnews;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final String TAG = MainActivity.class.getSimpleName();
-    //holds  our find restaurant  Button
+    RecyclerView recyclerView;
+    globalNewsAdapter adapter;
+    ProgressDialog dialog;
+    Button b1,b2,b3,b4,b5,b6,b7;
+    SearchView searchView;
     @BindView(R.id.findNewsButton)
-    Button FindNewsButton;
-    @BindView(R.id.locationEditText)
-    EditText LocationEditText;
-    @BindView(R.id.appNameTextView)
-    TextView ppNameTextView;
+    Button findNewsButton1;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);//runs all the default behaviours of an activity
-        setContentView(R.layout.activity_main);//tells the activity which layout to use which is activity_main
-        LocationEditText =(EditText) findViewById(R.id.locationEditText);
-        ButterKnife.bind(this);
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+            ButterKnife.bind(this);
 
-        FindNewsButton.setOnClickListener(this);
-    }
-    @Override
-    public void onClick(View v) {
-        if(v == FindNewsButton) {
-            String News = LocationEditText.getText().toString();
+            findNewsButton1.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view){
+            if (view == findNewsButton1) {
             Intent intent = new Intent(MainActivity.this, NewsActivity.class);
-            intent.putExtra("News", News);
-            startActivity(intent);
-        }}
-}
+                startActivity(intent);
+            }
+
+        }
+    }
+
 

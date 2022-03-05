@@ -17,7 +17,7 @@ import java.util.List;
 
 public class globalNewsAdapter extends RecyclerView.Adapter<GlobalViewHolder> implements SelectListener{
     private Context context;
-    private List<Article> headlines;
+    private List<Article>headlines;
     private SelectListener listener;
 
     public globalNewsAdapter(Context context, List<Article> headlines, SelectListener listener) {
@@ -29,7 +29,7 @@ public class globalNewsAdapter extends RecyclerView.Adapter<GlobalViewHolder> im
     @NonNull
     @Override
     public GlobalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new GlobalViewHolder(LayoutInflater.from(context).inflate(R.layout.activity_news,parent,false));
+        return new GlobalViewHolder(LayoutInflater.from(context).inflate(R.layout.article_list,parent,false));
     }
 
     @Override

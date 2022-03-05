@@ -3,8 +3,10 @@ package com.mainafelix.globalnews.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 
-public class Article {
+
+public class Article implements Serializable {
 
     @SerializedName("source")
     @Expose
@@ -69,7 +71,7 @@ public class Article {
         this.source = source;
     }
 
-    public Object getAuthor() {
+    public String getAuthor() {
         return author;
     }
 

@@ -6,7 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity"
     android:background="@drawable/news">
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search_view"
+        app:defaultQueryHint="search News....."
+        app:iconifiedByDefault="false"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize">
 
+    </androidx.appcompat.widget.SearchView>
 
     <ImageView
         android:id="@+id/imageView"
@@ -34,17 +41,6 @@
         android:textSize="50sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/locationEditText"
-        android:background="@color/black"
-        android:layout_above="@+id/findNewsButton"
-        android:layout_marginBottom="10dp"
-        android:padding="5dp"
-        android:hint="search"
-        android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/findNewsButton"
@@ -58,6 +54,16 @@
         android:textColor="@color/black"
         android:textStyle="italic"
         android:background="@color/colorAccent"/>
-
+<!--    <EditText-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text=""-->
+<!--        android:id="@+id/locationEditText"-->
+<!--        android:background="@color/black"-->
+<!--        android:layout_above="@+id/findNewsButton"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:padding="5dp"-->
+<!--        android:hint="search"-->
+<!--        android:layout_centerHorizontal="true"/>-->
 </RelativeLayout>
 

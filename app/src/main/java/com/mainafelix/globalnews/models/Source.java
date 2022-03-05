@@ -4,8 +4,10 @@ package com.mainafelix.globalnews.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 
-public class Source {
+
+public class Source implements Serializable {
 
     @SerializedName("id")
     @Expose

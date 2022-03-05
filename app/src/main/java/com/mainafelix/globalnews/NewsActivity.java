@@ -35,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewsActivity extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity implements SelectListener, View.OnClickListener {
     RecyclerView recyclerView;
     globalNewsAdapter adapter;
     ProgressDialog dialog;
@@ -44,16 +44,16 @@ public class NewsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        searchView = findViewById( R.id.search_view);
+        setContentView(R.layout.activity_news);
+        searchView = findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
             @Override
             public boolean onQueryTextSubmit(String query) {
-                dialog.setTitle("fetching news Articles of "+query);
+                dialog.setTitle("fetching news Articles of " + query);
                 dialog.show();
-                RequestManager manager = new RequestManager(MainActivity.this);
-                manager.getNewsHeadlines(listener,"general",query);
+                RequestManager manager = new RequestManager(NewsActivity.this);
+                manager.getNewsHeadlines(listener, "general", query);
                 return true;
             }
 
@@ -62,7 +62,6 @@ public class NewsActivity extends AppCompatActivity {
                 return false;
             }
         });
-
         dialog = new ProgressDialog(this);
         dialog.setTitle("Fetching news Articles");
         dialog.show();
@@ -81,45 +80,35 @@ public class NewsActivity extends AppCompatActivity {
         b6.setOnClickListener(this);
         b7 = findViewById( R.id.btn_7);
         b7.setOnClickListener(this);
-
-
-
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener,"general",null);
     }
-    private final OnFetchDataListener<NewsPracticeResponse>listener = new OnFetchDataListener<NewsPracticeResponse>() {
+    private final OnFetchDataListener<NewsCollection>listener = new OnFetchDataListener<NewsCollection>() {
         @Override
-        public void OnFetchData(List<NewsHeadlines> list, String message) {
+        public void OnFetchData(List<Article> list, String message) {
             if (list.isEmpty()){
-                Toast.makeText(MainActivity.this,"No news found",Toast.LENGTH_SHORT).show();
+                Toast.makeText(NewsActivity.this,"No news found",Toast.LENGTH_SHORT).show();
             }else{
                 showNews(list);
                 dialog.dismiss();
             }
         }
-
         @Override
         public void OnError(String message) {
-            Toast.makeText(MainActivity.this,"an error occured",Toast.LENGTH_SHORT).show();
+            Toast.makeText(NewsActivity.this,"an error occured",Toast.LENGTH_SHORT).show();
         }
     };
-
-    private void showNews(List<NewsHeadlines> list) {
+    private void showNews(List<Article> list) {
         recyclerView = findViewById(R.id.recycler_main);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this,1));
-        adapter = new CustomAdapter(this, list,this);
+        adapter = new globalNewsAdapter(this, list,this);
         recyclerView.setAdapter(adapter);
 
     }
 
-    @Override
-    public void OnNewsClick(NewsHeadlines headlines) {
-        startActivity(new Intent(MainActivity.this,DetailsActivity.class)
-                .putExtra("Data",headlines)
-        );
 
-    }
+
 
     @Override
     public void onClick(View view) {
@@ -131,5 +120,11 @@ public class NewsActivity extends AppCompatActivity {
         manager.getNewsHeadlines(listener,category,null);
 
     }
-}
 
+    @Override
+    public void OnNewsClick(Article headlines) {
+    startActivity(new Intent(NewsActivity.this,NewsDetailActivity.class)
+            .putExtra("Data",headlines)
+    );
+    }
+}

@@ -1,13 +1,14 @@
 
 package com.mainafelix.globalnews.models;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.mainafelix.globalnews.models.Article;
 
 
-public class NewsCollection {
+public class NewsCollection implements Serializable {
 
     @SerializedName("status")
     @Expose
