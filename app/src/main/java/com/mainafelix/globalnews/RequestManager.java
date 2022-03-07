@@ -18,19 +18,19 @@ import retrofit2.http.Query;
 public class RequestManager {
     Context context;
     Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl("https://newsapi.org/v2/")
-            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://newsapi.org/v2/")// calls the base url
+            .addConverterFactory(GsonConverterFactory.create())// serialization
             .build();
 
     public void  getNewsHeadlines(OnFetchDataListener listener,String category,String query){
-        CallNewsApi  callNewsApi = retrofit.create(CallNewsApi.class);
-        Call<NewsCollection>call = callNewsApi.callHeadlines("sa",category,query,NEWS_API_KEY);
+        CallNewsApi  callNewsApi = retrofit.create(CallNewsApi.class);// creating a request using retrofit
+        Call<NewsCollection>call = callNewsApi.callHeadlines("sa",category,query,NEWS_API_KEY);//fetching data from the api
         try{
-            call.enqueue(new Callback<NewsCollection>() {
+            call.enqueue(new Callback<NewsCollection>() {//makes the asynchronous request
                 @Override
                 public void onResponse(Call<NewsCollection> call, Response<NewsCollection> response) {
                     if(response.isSuccessful()){
-                        Toast.makeText(context, "Error!!!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Success!!!", Toast.LENGTH_SHORT).show();
                     }
                     listener.OnFetchData(response.body().getArticles(),response.message());
                 }
@@ -48,10 +48,10 @@ public class RequestManager {
         this.context = context;
     }
     public interface CallNewsApi{
-        @GET("top-headlines")
+        @GET("top-headlines")// declaring the endpoint
         Call<NewsCollection> callHeadlines(
-                @Query("country") String country,
-                @Query("category") String category,
+                @Query("country") String country,// pass in the required parameters
+                @Query("category") String category,//
                 @Query("q")String query,
                 @Query("apiKey")String api_key);
     }
