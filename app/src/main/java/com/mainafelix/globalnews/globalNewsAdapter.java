@@ -4,18 +4,17 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mainafelix.globalnews.models.Article;
+import com.mainafelix.globalnews.models.SelectListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class globalNewsAdapter extends RecyclerView.Adapter<GlobalViewHolder> implements SelectListener{
+public class globalNewsAdapter extends RecyclerView.Adapter<GlobalViewHolder> implements SelectListener {
     private Context context;
     private List<Article>headlines;
     private SelectListener listener;

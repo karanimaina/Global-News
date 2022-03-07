@@ -1,6 +1,4 @@
-package com.mainafelix.globalnews;
-
-import static com.mainafelix.globalnews.Constants.NEWS_API_KEY;
+package com.mainafelix.globalnews.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -10,30 +8,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mainafelix.globalnews.models.OnFetchDataListener;
+import com.mainafelix.globalnews.R;
+import com.mainafelix.globalnews.network.RequestManager;
+import com.mainafelix.globalnews.models.SelectListener;
+import com.mainafelix.globalnews.globalNewsAdapter;
 import com.mainafelix.globalnews.models.Article;
 import com.mainafelix.globalnews.models.NewsCollection;
-import com.mainafelix.globalnews.models.Source;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-import retrofit2.Call;
-
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class NewsActivity extends AppCompatActivity implements SelectListener, View.OnClickListener {
     RecyclerView recyclerView;
@@ -83,7 +70,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener,"general",null);
     }
-    private final OnFetchDataListener<NewsCollection>listener = new OnFetchDataListener<NewsCollection>() {
+    private final OnFetchDataListener<NewsCollection> listener = new OnFetchDataListener<NewsCollection>() {
         @Override
         public void OnFetchData(List<Article> list, String message) {
             if (list.isEmpty()){
@@ -109,7 +96,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
 
     @Override
     public void OnNewsClick(Article headlines) {
-        startActivity(new Intent(NewsActivity.this,NewsDetailActivity.class)
+        startActivity(new Intent(NewsActivity.this, NewsDetailActivity.class)
                 .putExtra("Data",headlines)
         );
 
