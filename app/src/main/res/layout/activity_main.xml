@@ -4,16 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".MainActivity"
+    tools:context=".ui.MainActivity"
     android:background="@drawable/news">
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view"
-        app:defaultQueryHint="search News....."
-        app:iconifiedByDefault="false"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
+<!--    <androidx.appcompat.widget.SearchView-->
+<!--        android:id="@+id/search_view"-->
+<!--        app:defaultQueryHint="search News....."-->
+<!--        app:iconifiedByDefault="false"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?actionBarSize">-->
 
-    </androidx.appcompat.widget.SearchView>
+<!--    </androidx.appcompat.widget.SearchView>-->
 
     <ImageView
         android:id="@+id/imageView"

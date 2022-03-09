@@ -1,10 +1,11 @@
-package com.mainafelix.globalnews;
+package com.mainafelix.globalnews.network;
 
 import static com.mainafelix.globalnews.Constants.NEWS_API_KEY;
 
 import android.content.Context;
 import android.widget.Toast;
 
+import com.mainafelix.globalnews.models.OnFetchDataListener;
 import com.mainafelix.globalnews.models.NewsCollection;
 
 import retrofit2.Call;
@@ -22,7 +23,7 @@ public class RequestManager {
             .addConverterFactory(GsonConverterFactory.create())// serialization
             .build();
 
-    public void  getNewsHeadlines(OnFetchDataListener listener,String category,String query){
+    public void  getNewsHeadlines(OnFetchDataListener listener, String category, String query){
         CallNewsApi  callNewsApi = retrofit.create(CallNewsApi.class);// creating a request using retrofit
         Call<NewsCollection>call = callNewsApi.callHeadlines("sa",category,query,NEWS_API_KEY);//fetching data from the api
         try{

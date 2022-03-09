@@ -1,4 +1,4 @@
-package com.mainafelix.globalnews;
+package com.mainafelix.globalnews.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mainafelix.globalnews.R;
 import com.mainafelix.globalnews.models.Article;
 import com.squareup.picasso.Picasso;
 

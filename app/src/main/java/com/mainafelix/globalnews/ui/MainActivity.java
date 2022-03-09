@@ -1,4 +1,4 @@
-package com.mainafelix.globalnews;
+package com.mainafelix.globalnews.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,6 +9,9 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.mainafelix.globalnews.R;
+import com.mainafelix.globalnews.globalNewsAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SearchView searchView;
     @BindView(R.id.findNewsButton)
     Button findNewsButton1;
+    
     @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);

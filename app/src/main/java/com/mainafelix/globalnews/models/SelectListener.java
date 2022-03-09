@@ -1,4 +1,4 @@
-package com.mainafelix.globalnews;
+package com.mainafelix.globalnews.models;
 
 import com.mainafelix.globalnews.models.Article;
 
