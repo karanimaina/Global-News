@@ -44,7 +44,6 @@ public class globalNewsAdapter extends RecyclerView.Adapter<GlobalViewHolder> im
                 listener.OnNewsClick(headlines.get(holder.getAdapterPosition()));
             }
         });
-
     }
 
     @Override

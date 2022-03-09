@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SearchView searchView;
     @BindView(R.id.findNewsButton)
     Button findNewsButton1;
+    
     @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
