@@ -6,80 +6,98 @@
     android:layout_height="match_parent"
     tools:context=".ui.NewsDetailActivity"
     android:orientation="vertical">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <androidx.cardview.widget.CardView
-                app:cardElevation="8dp"
-                android:layout_margin="8dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardElevation="8dp">
+
                 <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="6dp">
+                    android:layout_margin="6dp"
+                    android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/text_detail_title"
-                        android:textColor="@color/purple_500"
-                        android:textStyle="bold"
-                        android:textSize="26sp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/purple_500"
+                        android:textSize="26sp"
+                        android:textStyle="bold">
 
                     </TextView>
+
                     <ImageView
                         android:id="@+id/img_detail_news"
+                        android:layout_width="383dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
                         android:scaleType="fitXY"
-                        android:src="@drawable/available"
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp"
-                        android:layout_margin="8dp">
+                        android:src="@drawable/available">
 
                     </ImageView>
+
                     <TextView
                         android:id="@+id/text_detail_author"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_margin="6dp"
                         android:textColor="@color/purple_700"
-                        android:textSize="16sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:textSize="16sp">
 
                     </TextView>
+
                     <TextView
                         android:id="@+id/text_detail_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_margin="6dp"
                         android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:textSize="16sp">
 
                     </TextView>
 
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <TextView
+                android:id="@+id/text_detail_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/text_detail_detail"
-                android:textColor="@color/purple_500"
                 android:layout_margin="8dp"
+                android:textColor="@color/purple_500"
                 android:textSize="23sp">
 
             </TextView>
+
             <TextView
+                android:id="@+id/text_detail_content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/text_detail_content"
-                android:textColor="@color/black"
                 android:layout_margin="8dp"
-                android:textSize="20sp">
-            </TextView>
+                android:textColor="@color/black"
+                android:textSize="20sp"></TextView>
+
+            <Button
+                android:id="@+id/Likebutton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_detail_content"
+                android:layout_gravity="end"
+                android:text="liked" />
+
         </LinearLayout>
     </ScrollView>
 

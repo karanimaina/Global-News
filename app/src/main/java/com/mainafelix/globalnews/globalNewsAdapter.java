@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class globalNewsAdapter extends RecyclerView.Adapter<GlobalViewHolder> implements SelectListener {
+public class globalNewsAdapter extends RecyclerView.Adapter<GlobalViewHolder> implements SelectListener{
     private Context context;
     private List<Article>headlines;
     private SelectListener listener;

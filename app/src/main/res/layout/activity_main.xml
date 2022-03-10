@@ -6,14 +6,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.MainActivity"
     android:background="@drawable/news">
-<!--    <androidx.appcompat.widget.SearchView-->
-<!--        android:id="@+id/search_view"-->
-<!--        app:defaultQueryHint="search News....."-->
-<!--        app:iconifiedByDefault="false"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?actionBarSize">-->
 
-<!--    </androidx.appcompat.widget.SearchView>-->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:padding="14dp"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -21,7 +22,10 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="-13dp"
+        android:layout_marginTop="1dp"
         android:adjustViewBounds="false"
+        android:background="@drawable/available"
         android:scaleType="centerCrop"
         android:src="@drawable/news"
         app:srcCompat="@drawable/news" />
@@ -54,6 +58,19 @@
         android:textColor="@color/black"
         android:textStyle="italic"
         android:background="@color/colorAccent"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="208dp"
+        android:layout_height="55dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="94dp"
+        android:layout_marginBottom="73dp"
+        android:spinnerMode="dropdown"
+        android:background="@color/white"
+        android:tooltipText="select country" />
 
 </RelativeLayout>
 
