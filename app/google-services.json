@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1040986173737",
+    "project_id": "myrestaurants-eca29",
+    "storage_bucket": "myrestaurants-eca29.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1040986173737:android:519a3f074198af08310738",
+        "android_client_info": {
+          "package_name": "com.mainafelix.myrestaurants"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1040986173737-gq4ebo9ufhtkk1c2pj0dlcbv6ehbqele.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mainafelix.myrestaurants",
+            "certificate_hash": "9163414f96c24c7ce7ea1abb9b2fe26729bc024e"
+          }
+        },
+        {
+          "client_id": "1040986173737-7egvube2qtliv3kb52j6cnr5aq08n2aj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeXh-IyABG3RLxAjcldnXPFNu4NwwnlHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1040986173737-7egvube2qtliv3kb52j6cnr5aq08n2aj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
