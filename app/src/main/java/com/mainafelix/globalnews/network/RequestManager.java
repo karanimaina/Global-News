@@ -25,7 +25,7 @@ public class RequestManager {
 
     public void  getNewsHeadlines(OnFetchDataListener listener, String category, String query){
         CallNewsApi  callNewsApi = retrofit.create(CallNewsApi.class);// creating a request using retrofit
-        Call<NewsCollection>call = callNewsApi.callHeadlines("sa",category,query,NEWS_API_KEY);//fetching data from the api
+        Call<NewsCollection>call = callNewsApi.callHeadlines("nz",category,query,NEWS_API_KEY);//fetching data from the api
         try{
             call.enqueue(new Callback<NewsCollection>() {//makes the asynchronous request
                 @Override

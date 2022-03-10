@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "425772818932",
+    "project_id": "global-news-6ad08",
+    "storage_bucket": "global-news-6ad08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:425772818932:android:be06b559514717f0fd99a1",
+        "android_client_info": {
+          "package_name": "com.mainafelix.globalnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "425772818932-fmgdsh44714np5qpp78fftrsibjjv526.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mainafelix.globalnews",
+            "certificate_hash": "9163414f96c24c7ce7ea1abb9b2fe26729bc024e"
+          }
+        },
+        {
+          "client_id": "425772818932-g61tc54gk6djrhu8kvhkj623lbmgk1nf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKYrbuAZGrRDhGINivA0VguKvZz-mO3wM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "425772818932-g61tc54gk6djrhu8kvhkj623lbmgk1nf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
