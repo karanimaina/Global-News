@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mainafelix.globalnews.models.OnFetchDataListener;
@@ -28,6 +29,9 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
     ProgressDialog dialog;
     Button b1,b2,b3,b4,b5,b6,b7;
     SearchView searchView;
+    Spinner spinner;
+    String country;
+    String category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +44,9 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
                 dialog.setTitle("fetching news Articles of " + query);
                 dialog.show();
                 RequestManager manager = new RequestManager(NewsActivity.this);
-                manager.getNewsHeadlines(listener, "general", query);
+//                add country ;
+//                add category
+             manager.getNewsHeadlines(listener,"general", query);
                 return true;
             }
 
@@ -49,6 +55,9 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
                 return false;
             }
         });
+//        Intent intent = getIntent();
+//        int positionToShowToSpinner = Integer.parseInt(intent.getStringExtra("position"));
+//        spinner.setSelection(positionToShowToSpinner);
         dialog = new ProgressDialog(this);
         dialog.setTitle("Fetching news Articles");
         dialog.show();
@@ -109,7 +118,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         dialog.setTitle("fetching "+ category +" News ");
         dialog.show();
         RequestManager manager = new RequestManager(this);
-        manager.getNewsHeadlines(listener,category,null);
+        manager.getNewsHeadlines(listener,category ,null);
 
     }
 }
