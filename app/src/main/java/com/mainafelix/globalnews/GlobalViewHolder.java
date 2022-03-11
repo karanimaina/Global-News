@@ -21,4 +21,5 @@ public class GlobalViewHolder extends RecyclerView.ViewHolder {
         cardView = itemView.findViewById(R.id.main_container);
 
     }
+
 }

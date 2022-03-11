@@ -3,17 +3,21 @@ package com.mainafelix.globalnews.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
 import com.mainafelix.globalnews.R;
 import com.mainafelix.globalnews.models.Article;
 import com.squareup.picasso.Picasso;
 
-public class NewsDetailActivity extends AppCompatActivity {
+public class NewsDetailActivity extends AppCompatActivity implements View.OnClickListener{
     Article headlines;
     TextView txt_title,txt_author,txt_time,txt_detail,txt_content;
     ImageView img_news;
+    private DatabaseReference likedNewsRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,11 @@ public class NewsDetailActivity extends AppCompatActivity {
         txt_time .setText(headlines.getPublishedAt());
         Picasso.get().load(headlines.getUrlToImage()).into(img_news);
 
+
+    }
+
+    @Override
+    public void onClick(View view) {
 
     }
 }
