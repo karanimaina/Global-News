@@ -41,10 +41,10 @@ public class NewsFragment extends Fragment implements View.OnClickListener{
         public  NewsFragment() {
             // Required empty public constructor
         }
-        public static NewsFragment newInstance(Article article1) {
+        public static NewsFragment newInstance(Article article) {
             NewsFragment newsFragment = new NewsFragment();
             Bundle args = new Bundle();
-            args.putParcelable("news", Parcels.wrap(article1));
+            args.putParcelable("article", Parcels.wrap(article));
            newsFragment.setArguments(args);
             return newsFragment;
         }
@@ -53,7 +53,7 @@ public class NewsFragment extends Fragment implements View.OnClickListener{
         public void onCreate(@Nullable Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             assert getArguments() != null;
-          headlines = Parcels.unwrap(getArguments().getParcelable("news"));
+          headlines = Parcels.unwrap(getArguments().getParcelable("article"));
         }
 
     @Override

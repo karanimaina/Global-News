@@ -1,5 +1,7 @@
 package com.mainafelix.globalnews;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -12,26 +14,27 @@ import java.util.List;
 
 public class NewsPagerAdapter extends FragmentPagerAdapter {
 
-        private List<Article> news;
+        private List<Article>headlines;
 
-        public NewsPagerAdapter(@NonNull FragmentManager fm, int behavior, List<Article> news1) {
+        public NewsPagerAdapter(@NonNull FragmentManager fm, int behavior, List<Article> article) {
             super(fm, behavior);
-            news = news1;
+           headlines = article;
         }
 
         @Override
         public Fragment getItem(int position) {
-            return NewsFragment.newInstance(news.get(position));
+            return NewsFragment.newInstance(headlines.get(position));
         }
 
         @Override
         public int getCount() {
-            return news.size();
+            Log.d("debug ",headlines.toString());
+            return headlines.size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return news.get(position).getTitle();
+            return headlines.get(position).getTitle();
         }
     }
 

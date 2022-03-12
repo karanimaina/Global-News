@@ -90,6 +90,9 @@ android {
         // Parceler
         implementation 'org.parceler:parceler-api:1.1.12'
         annotationProcessor 'org.parceler:parceler:1.1.12'
+        //firebase ui  db
+        implementation 'com.google.firebase:firebase-database'
+        implementation 'com.firebaseui:firebase-ui-database:7.1.1'
 
 
 

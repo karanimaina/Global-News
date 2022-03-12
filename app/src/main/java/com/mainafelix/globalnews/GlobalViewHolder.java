@@ -23,10 +23,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GlobalViewHolder extends RecyclerView.ViewHolder {
+public class GlobalViewHolder extends RecyclerView.ViewHolder implements  View.OnClickListener{
     TextView text_title,text_source;
     ImageView img_headline;
     CardView cardView;
+    private List<Article>headlines;
+    private Context context;
+
 
     public GlobalViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -34,6 +37,16 @@ public class GlobalViewHolder extends RecyclerView.ViewHolder {
         text_source = itemView.findViewById(R.id.text_source);
         img_headline= itemView.findViewById(R.id.img_headline);
         cardView = itemView.findViewById(R.id.main_container);
+        context = itemView.getContext();
 
     }
-}
+
+    @Override
+    public void onClick(View view) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(context, NewsDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("article", Parcels.wrap(headlines));
+            context.startActivity(intent);
+        }
+    }
