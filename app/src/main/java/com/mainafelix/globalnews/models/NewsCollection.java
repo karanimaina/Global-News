@@ -7,7 +7,9 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.mainafelix.globalnews.models.Article;
 
+import org.parceler.Parcel;
 
+@Parcel
 public class NewsCollection implements Serializable {
 
     @SerializedName("status")

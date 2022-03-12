@@ -4,9 +4,11 @@ package com.mainafelix.globalnews.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.io.Serializable;
 
-
+@Parcel
 public class Source implements Serializable {
 
     @SerializedName("id")

@@ -3,25 +3,29 @@ package com.mainafelix.globalnews.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.mainafelix.globalnews.Constants;
 import com.mainafelix.globalnews.R;
 import com.mainafelix.globalnews.models.Article;
 import com.squareup.picasso.Picasso;
 
-public class NewsDetailActivity extends AppCompatActivity implements View.OnClickListener{
+public class NewsDetailActivity extends AppCompatActivity {
     Article headlines;
     TextView txt_title,txt_author,txt_time,txt_detail,txt_content;
     ImageView img_news;
-    private DatabaseReference likedNewsRef;
-
+    private DatabaseReference databaseReference;
+    Button like;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_detail);
+         databaseReference = FirebaseDatabase
+                 .getInstance().getReference().child(Constants.FIREBASE_CHILD_LIKED);
 
 
         txt_title = findViewById(R.id.text_detail_title);
@@ -30,6 +34,7 @@ public class NewsDetailActivity extends AppCompatActivity implements View.OnClic
         txt_author =findViewById(R.id.text_detail_author);
         img_news  = findViewById(R.id.img_detail_news);
         txt_time = findViewById(R.id.text_detail_time);
+        like = findViewById(R.id.Likebutton);
 
         headlines = (Article) getIntent().getSerializableExtra("Data");
 
@@ -41,10 +46,6 @@ public class NewsDetailActivity extends AppCompatActivity implements View.OnClic
         Picasso.get().load(headlines.getUrlToImage()).into(img_news);
 
 
-    }
-
-    @Override
-    public void onClick(View view) {
 
     }
 }
