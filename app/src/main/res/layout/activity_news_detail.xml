@@ -99,13 +99,7 @@
                 android:layout_below="@+id/text_detail_content"
                 android:layout_gravity="end"
                 android:text="liked" />
-<!--            <Button-->
-<!--                android:id="@+id/sa"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_below="@+id/text_detail_content"-->
-<!--                android:layout_gravity="end"-->
-<!--                android:text="liked" />-->
+
 
         </LinearLayout>
     </ScrollView>

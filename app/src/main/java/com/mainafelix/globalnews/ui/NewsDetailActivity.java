@@ -28,7 +28,7 @@ import java.util.List;
 
 import butterknife.ButterKnife;
 
-public class NewsDetailActivity extends AppCompatActivity implements View.OnClickListener {
+public class NewsDetailActivity extends AppCompatActivity  {
     Article headlines;
     TextView txt_title,txt_author,txt_time,txt_detail,txt_content;
     ImageView img_news;
@@ -78,15 +78,15 @@ public class NewsDetailActivity extends AppCompatActivity implements View.OnClic
 
     }
 
-    @Override
-    public void onClick(View view) {
-     if (view == like ){
-        DatabaseReference savedNews = FirebaseDatabase
-                .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_LIKED);
-        savedNews.push().setValue(articles);
-     }
-    }
+//    @Override
+//    public void onClick(View view) {
+//     if (view == like ){
+//        DatabaseReference savedNews = FirebaseDatabase
+//                .getInstance()
+//                .getReference(Constants.FIREBASE_CHILD_LIKED);
+//        savedNews.push().setValue(articles);
+//     }
+//    }
 
     private void saveNewsToFirebase(String news) {
         databaseReference.push().setValue(news);
@@ -96,30 +96,7 @@ public class NewsDetailActivity extends AppCompatActivity implements View.OnClic
         super.onDestroy();
         databaseReference.removeEventListener(LikedNews);
     }
-    public class NewsDetailFragment extends Fragment implements View.OnClickListener {
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View view = inflater.inflate(R.layout.activity_news_detail, container, false);
 
-            txt_title = findViewById(R.id.text_detail_title);
-            txt_content =findViewById(R.id.text_detail_content);
-            txt_detail = findViewById(R.id.text_detail_detail);
-            txt_author =findViewById(R.id.text_detail_author);
-            img_news  = findViewById(R.id.img_detail_news);
-            txt_time = findViewById(R.id.text_detail_time);
-            like.setOnClickListener(this);
-            return view;
-        }
 
-        @Override
-        public void onClick(View v) {
-            if (v == like ) {
-                DatabaseReference newsref = FirebaseDatabase
-                        .getInstance()
-                        .getReference(Constants.FIREBASE_CHILD_NEWS);
-                newsref.push().setValue(articles);
-                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
-            }
-        }
     }
-    }
+
