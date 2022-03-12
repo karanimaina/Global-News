@@ -32,9 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button b1, b2, b3, b4, b5, b6, b7;
     SearchView searchView;
     Spinner spinner;
-
-    @BindView(R.id.findNewsButton)
-    Button findNewsButton1;
+    @BindView(R.id.savedNewsButton) Button savedNewsButton;
+    @BindView(R.id.findNewsButton) Button findNewsButton1;
     int positionOfSelectedDataFromSpinner;
 
     @Override
@@ -58,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
         spinner.setOnItemSelectedListener(new MySpinnerSelectedListener());
 //add this
+        savedNewsButton.setOnClickListener(this);
         findNewsButton1.setOnClickListener(this);
     }
 
@@ -67,9 +67,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(this, NewsActivity.class);
 //            intent.putExtra("position", country);
             startActivity(intent);
-        }
-
-    }
+        }else {
+            if (view == savedNewsButton) {
+                Intent intent = new Intent(MainActivity.this, savedNewsListActivity.class);
+                startActivity(intent);
+            }
+        }}
 }
 
 
