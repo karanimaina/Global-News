@@ -27,18 +27,19 @@ public class NewsDetailActivity extends AppCompatActivity implements View.OnClic
     Button like;
     TextView savedText;
     private  DatabaseReference databaseReference;
+    private ValueEventListener LikedNews;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_detail);
          databaseReference = FirebaseDatabase
                  .getInstance().getReference().child(Constants.FIREBASE_CHILD_LIKED);
-databaseReference.addValueEventListener(new ValueEventListener() {
+    LikedNews = databaseReference.addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(DataSnapshot dataSnapshot) { //something changed!
         for (DataSnapshot newsSnapshot : dataSnapshot.getChildren()) {
             String savedNews = newsSnapshot.getValue().toString();
-            Log.d("news updated", "location: " +savedNews); //log
+            Log.d("news updated", "news: " +savedNews); //log
         }
     }
 
