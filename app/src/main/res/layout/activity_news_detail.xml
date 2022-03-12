@@ -88,7 +88,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:textColor="@color/black"
-                android:textSize="20sp"></TextView>
+                android:textSize="20sp">
+
+            </TextView>
 
             <Button
                 android:id="@+id/Likebutton"
@@ -97,6 +99,13 @@
                 android:layout_below="@+id/text_detail_content"
                 android:layout_gravity="end"
                 android:text="liked" />
+<!--            <Button-->
+<!--                android:id="@+id/sa"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@+id/text_detail_content"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:text="liked" />-->
 
         </LinearLayout>
     </ScrollView>
