@@ -55,25 +55,25 @@ public class FirebaseNewsViewholder extends RecyclerView.ViewHolder implements V
     @Override
     public void onClick(View view) {
    final ArrayList<Article>articles = new ArrayList<>();
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_NEWS);
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    articles.add(snapshot.getValue(Article.class));
-                }
-                int  itemPosition = getLayoutPosition();
-                Intent intent = new Intent(context, NewsDetailActivity.class);
-                intent.putExtra("position",itemPosition + "");
-                intent.putExtra("articles" , Parcels.wrap(articles));
-                context.startActivity(intent);
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-}
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_NEWS);
+//        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    articles.add(snapshot.getValue(Article.class));
+//                }
+//                int  itemPosition = getLayoutPosition();
+//                Intent intent = new Intent(context, NewsDetailActivity.class);
+//                intent.putExtra("position",itemPosition + "");
+//                intent.putExtra("articles" , Parcels.wrap(articles));
+//                context.startActivity(intent);
+//            }
+//
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
+}}

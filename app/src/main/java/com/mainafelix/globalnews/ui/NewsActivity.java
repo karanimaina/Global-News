@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -44,6 +45,8 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         setContentView(R.layout.activity_news);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
        recentSearchedCountries =sharedPreferences.getString(Constants.PREFERENCES_KEY_NEWS,null);
+        Log.d("Shared Pref Location", recentSearchedCountries);
+         country = recentSearchedCountries;
         searchView = findViewById(R.id.search_view);
         Bundle extras = getIntent().getExtras();
 
