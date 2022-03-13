@@ -24,8 +24,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mainafelix.globalnews.Constants;
 import com.mainafelix.globalnews.MySpinnerSelectedListener;
 import com.mainafelix.globalnews.R;
@@ -50,13 +53,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   //  private SharedPreferences sharedPreferences;
    // private SharedPreferences.Editor editor;
     private DatabaseReference databaseReference;
-
-
-
+    private ValueEventListener NewsValueEventListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         databaseReference = FirebaseDatabase
                 .getInstance().getReference().child(Constants.PREFERENCES_KEY_NEWS);
+       NewsValueEventListener= databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot newsSnapshot : snapshot.getChildren()){
+                    selectedCountry = spinner.getSelectedItem().toString();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -127,6 +142,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        databaseReference.removeEventListener(NewsValueEventListener);
     }
     private void logout() {
         FirebaseAuth.getInstance().signOut();
