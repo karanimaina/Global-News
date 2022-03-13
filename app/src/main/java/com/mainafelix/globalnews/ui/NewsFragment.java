@@ -82,10 +82,13 @@
 //
 //
 //            if (v == like ) {
+// FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//         String uid = user.getUid();
 //                DatabaseReference newsref = FirebaseDatabase
 //                        .getInstance()
 //                        .getReference(Constants.FIREBASE_CHILD_NEWS);
-//                newsref.push().setValue(headlines);
+//               DatabaseReference pushref = newsref.push();   //.setValue(headlines);
+//         String pushId = pushRef.getKey();
 //                Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
 //            }
 //        }

@@ -33,8 +33,8 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
     Button b1,b2,b3,b4,b5,b6,b7;
     SearchView searchView;
     Spinner spinner;
-    String country;
     String category;
+    String country = "";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private String recentSearch;
@@ -45,8 +45,13 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         editor = sharedPreferences.edit();
         searchView = findViewById(R.id.search_view);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        Bundle extras = getIntent().getExtras();
 
+        if (extras != null) {
+           country = extras.getString("country");
+
+        }
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 dialog.setTitle("fetching news Articles of " + query);
@@ -54,7 +59,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
                 RequestManager manager = new RequestManager(NewsActivity.this);
 //                add country ;
 //                add category
-             manager.getNewsHeadlines(listener,"general", query);
+             manager.getNewsHeadlines(listener,"general",null,country);
                 return true;
             }
 
@@ -85,7 +90,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         b7 = findViewById( R.id.btn_7);
         b7.setOnClickListener(this);
         RequestManager manager = new RequestManager(this);
-        manager.getNewsHeadlines(listener,"general",null);
+        manager.getNewsHeadlines(listener,"general",null,country);
     }
 
     private final OnFetchDataListener<NewsCollection> listener = new OnFetchDataListener<NewsCollection>() {
@@ -128,7 +133,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         dialog.setTitle("fetching "+ category +" News ");
         dialog.show();
         RequestManager manager = new RequestManager(this);
-        manager.getNewsHeadlines(listener,category ,null);
+        manager.getNewsHeadlines(listener,category ,null,country);
     }
     private void addToSharedPreferences(String searchedNews) {
         editor.putString(Constants.PREFERENCES_KEY_NEWS, searchedNews).apply();
