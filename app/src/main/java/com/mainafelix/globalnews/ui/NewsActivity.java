@@ -10,9 +10,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -28,8 +25,6 @@ import com.mainafelix.globalnews.models.Article;
 import com.mainafelix.globalnews.models.NewsCollection;
 
 import java.util.List;
-
-import butterknife.ButterKnife;
 
 public class NewsActivity extends AppCompatActivity implements SelectListener, View.OnClickListener {
     RecyclerView recyclerView;
@@ -47,6 +42,8 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = sharedPreferences.edit();
         searchView = findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
@@ -90,28 +87,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener,"general",null);
     }
-    private void addToSharedPreferences(String searchednews) {
-        editor.putString(Constants.PREFERENCES_KEY_NEWS, searchednews).apply();
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_search, menu);
-        ButterKnife.bind(this);
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = sharedPreferences.edit();
-
-        MenuItem menuItem = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) menuItem.getActionView();
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
     private final OnFetchDataListener<NewsCollection> listener = new OnFetchDataListener<NewsCollection>() {
         @Override
         public void OnFetchData(List<Article> list, String message) {
@@ -140,6 +116,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
     public void OnNewsClick(Article headlines) {
         startActivity(new Intent(NewsActivity.this, NewsDetailActivity.class)
                 .putExtra("Data",headlines)
+
         );
 
     }
@@ -152,6 +129,8 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         dialog.show();
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener,category ,null);
-
+    }
+    private void addToSharedPreferences(String searchedNews) {
+        editor.putString(Constants.PREFERENCES_KEY_NEWS, searchedNews).apply();
     }
 }

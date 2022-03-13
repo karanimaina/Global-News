@@ -93,6 +93,8 @@ android {
         //firebase ui  db
         implementation 'com.google.firebase:firebase-database'
         implementation 'com.firebaseui:firebase-ui-database:7.1.1'
+        implementation 'com.google.firebase:firebase-auth'
+
 
 
 
