@@ -57,10 +57,7 @@
         android:text="Find News"
         android:textColor="@color/black"
         android:textStyle="italic"
-        android:background="@color/colorAccent"
-        android:visibility="visible"
-        android:layout_above="@+id/savedRestaurantsButton"
-        android:layout_alignParentLeft="true" />
+        android:background="@color/colorAccent"/>
 
     <Spinner
         android:id="@+id/spinner"
@@ -74,17 +71,93 @@
         android:spinnerMode="dropdown"
         android:background="@color/white"
         android:tooltipText="select country" />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="My Saved News"
-        android:id="@+id/savedNewsButton"
-        android:background="@color/colorAccent"
-        android:textColor="@color/colorTextIcons"
-        android:visibility="visible"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--    android:layout_width="match_parent"-->
+    <!--    android:layout_height="match_parent"-->
+    <!--    xmlns:tools="http://schemas.android.com/tools"-->
+    <!--    tools:context=".ui.MainActivity"-->
+    <!--    android:background="@drawable/news">-->
 
+    <!--    <TextView-->
+    <!--        android:id="@+id/textView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textStyle="bold"-->
+    <!--        android:padding="14dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="TextView" />-->
+
+    <!--    <ImageView-->
+    <!--        android:id="@+id/imageView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_alignParentStart="true"-->
+    <!--        android:layout_alignParentTop="true"-->
+    <!--        android:layout_marginStart="-13dp"-->
+    <!--        android:layout_marginTop="1dp"-->
+    <!--        android:adjustViewBounds="false"-->
+    <!--        android:background="@drawable/available"-->
+    <!--        android:scaleType="centerCrop"-->
+    <!--        android:src="@drawable/news"-->
+    <!--        app:srcCompat="@drawable/news" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/appNameTextView"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentTop="true"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginTop="35dp"-->
+    <!--        android:background="@color/colorPrimaryText"-->
+    <!--        android:fontFamily="sans-serif-medium"-->
+    <!--        android:includeFontPadding="true"-->
+    <!--        android:text="GLOBAL NEWS"-->
+    <!--        android:textColor="@color/teal_700"-->
+    <!--        android:textSize="50sp"-->
+    <!--        android:textStyle="bold" />-->
+
+
+    <!--    <Button-->
+    <!--        android:id="@+id/findNewsButton"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentStart="true"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_marginStart="5dp"-->
+    <!--        android:layout_marginBottom="-2dp"-->
+    <!--        android:text="Find News"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textStyle="italic"-->
+    <!--        android:background="@color/colorAccent"-->
+    <!--        android:visibility="visible"-->
+    <!--        android:layout_above="@+id/savedRestaurantsButton"-->
+    <!--        android:layout_alignParentLeft="true" />-->
+
+    <!--    <Spinner-->
+    <!--        android:id="@+id/spinner"-->
+    <!--        android:layout_width="208dp"-->
+    <!--        android:layout_height="55dp"-->
+    <!--        android:layout_alignParentStart="true"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginStart="94dp"-->
+    <!--        android:layout_marginBottom="73dp"-->
+    <!--        android:spinnerMode="dropdown"-->
+    <!--        android:background="@color/white"-->
+    <!--        android:tooltipText="select country" />-->
+    <!--    <Button-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="My Saved News"-->
+    <!--        android:id="@+id/savedNewsButton"-->
+    <!--        android:background="@color/colorAccent"-->
+    <!--        android:textColor="@color/colorTextIcons"-->
+    <!--        android:visibility="visible"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_alignParentLeft="true"-->
+    <!--        android:layout_alignParentStart="true"/>-->
+
+    <!--</RelativeLayout>-->
 </RelativeLayout>
-

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,7 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.mainafelix.globalnews.Constants;
-import com.mainafelix.globalnews.NewsPagerAdapter;
 import com.mainafelix.globalnews.R;
 import com.mainafelix.globalnews.models.Article;
 import com.squareup.picasso.Picasso;
@@ -34,7 +34,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class NewsDetailActivity extends AppCompatActivity  {
+//public class NewsDetailActivity extends AppCompatActivity  {
 //    Article headlines;
 //    TextView txt_title,txt_author,txt_time,txt_detail,txt_content;
 //    ImageView img_news;
@@ -103,23 +103,54 @@ public class NewsDetailActivity extends AppCompatActivity  {
 //        databaseReference.removeEventListener(LikedNews);
 //    }
 //
-@BindView(R.id.viewPager) ViewPager mViewPager;
-    private NewsPagerAdapter adapterViewPager;
-    List<Article>headlines;
-
+//@BindView(R.id.viewPager)
+//ViewPager mViewPager;
+//    private NewsPagerAdapter adapterViewPager;
+//    List<Article>headlines;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_news_detail);
+//        ButterKnife.bind(this);
+//
+//       headlines = Parcels.unwrap(getIntent().getParcelableExtra("restaurants"));
+//        int startingPosition = getIntent().getIntExtra("position", 0);
+//
+//        adapterViewPager = new NewsPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,headlines);
+//        mViewPager.setAdapter(adapterViewPager);
+//        mViewPager.setCurrentItem(startingPosition);
+//    }
+public class NewsDetailActivity extends AppCompatActivity {
+    Article headlines;
+    TextView txt_title,txt_author,txt_time,txt_detail,txt_content;
+    ImageView img_news;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_detail);
-        ButterKnife.bind(this);
 
-       headlines = Parcels.unwrap(getIntent().getParcelableExtra("news"));
-        int startingPosition = getIntent().getIntExtra("position", 0);
 
-        adapterViewPager = new NewsPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, headlines);
-        mViewPager.setAdapter(adapterViewPager);
-        mViewPager.setCurrentItem(startingPosition);
+        txt_title = findViewById(R.id.text_detail_title);
+        txt_content =findViewById(R.id.text_detail_content);
+        txt_detail = findViewById(R.id.text_detail_detail);
+        txt_author =findViewById(R.id.text_detail_author);
+        img_news  = findViewById(R.id.img_detail_news);
+        txt_time = findViewById(R.id.text_detail_time);
+
+        headlines = (Article) getIntent().getSerializableExtra("Data");
+
+        txt_title.setText(headlines.getTitle());
+        txt_author.setText(headlines.getAuthor());
+        txt_content.setText(headlines.getContent());
+        txt_detail.setText(headlines.getDescription());
+        txt_time .setText(headlines.getPublishedAt());
+        Picasso.get().load(headlines.getUrlToImage()).into(img_news);
+
+
     }
+}
 
-    }
 
