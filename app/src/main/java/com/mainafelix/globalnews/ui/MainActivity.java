@@ -111,7 +111,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     SearchView searchView;
    @BindView(R.id.spinner)
     Spinner spinner;
-
     @BindView(R.id.findNewsButton)
     Button findNewsButton1;
     int positionOfSelectedDataFromSpinner;
