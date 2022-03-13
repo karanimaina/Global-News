@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view == findNewsButton1) {
             selectedCountry = spinner.getSelectedItem().toString();
             Log.d("country",selectedCountry);
+            addToSharedPreferences(selectedCountry);
             Intent intent = new Intent(this, NewsActivity.class);
            intent.putExtra("country", selectedCountry);
             startActivity(intent);
