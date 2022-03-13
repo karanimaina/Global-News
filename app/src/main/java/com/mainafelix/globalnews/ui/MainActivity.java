@@ -24,6 +24,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mainafelix.globalnews.Constants;
 import com.mainafelix.globalnews.MySpinnerSelectedListener;
 import com.mainafelix.globalnews.R;
@@ -47,11 +49,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String selectedCountry ="";
   //  private SharedPreferences sharedPreferences;
    // private SharedPreferences.Editor editor;
+    private DatabaseReference databaseReference;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        databaseReference = FirebaseDatabase
+                .getInstance().getReference().child(Constants.PREFERENCES_KEY_NEWS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -91,20 +96,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (view == findNewsButton1) {
             selectedCountry = spinner.getSelectedItem().toString();
             Log.d("country",selectedCountry);
-            if (!(selectedCountry).equals(null)){
-                addToSharedPreferences(selectedCountry);
-            }
-            addToSharedPreferences(selectedCountry);
+            saveCountryToFirebase(selectedCountry);
+//            if (!(selectedCountry).equals(null)){
+//                addToSharedPreferences(selectedCountry);
+//            }
             Intent intent = new Intent(this, NewsActivity.class);
            intent.putExtra("country", selectedCountry);
             startActivity(intent);
 
         }
     }
-
-    private void addToSharedPreferences(String selectedCountry) {
-     //   editor.putString(Constants.PREFERENCES_KEY_NEWS, selectedCountry).apply();
+    public void saveCountryToFirebase(String selectedCountry) {
+       databaseReference.push().setValue(selectedCountry);
     }
+
+//    private void addToSharedPreferences(String selectedCountry) {
+//     //   editor.putString(Constants.PREFERENCES_KEY_NEWS, selectedCountry).apply();
+//    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
