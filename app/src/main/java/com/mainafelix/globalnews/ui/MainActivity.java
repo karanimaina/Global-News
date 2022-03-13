@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.mainafelix.globalnews.Constants;
 import com.mainafelix.globalnews.MySpinnerSelectedListener;
 import com.mainafelix.globalnews.R;
 import com.mainafelix.globalnews.globalNewsAdapter;
@@ -96,7 +97,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
 
         }
+    }
 
+    private void addToSharedPreferences(String selectedCountry) {
+        editor.putString(Constants.PREFERENCES_KEY_NEWS, selectedCountry).apply();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

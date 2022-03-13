@@ -37,13 +37,13 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
     String country = "";
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
-    private String recentSearch;
+    private String recentSearchedCountries;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = sharedPreferences.edit();
+       recentSearchedCountries =sharedPreferences.getString(Constants.PREFERENCES_KEY_NEWS,null);
         searchView = findViewById(R.id.search_view);
         Bundle extras = getIntent().getExtras();
 
