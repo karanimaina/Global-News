@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private String selectedCountry ="";
-    private SharedPreferences sharedPreferences;
-    private SharedPreferences.Editor editor;
+  //  private SharedPreferences sharedPreferences;
+   // private SharedPreferences.Editor editor;
 
 
 
@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-       sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        editor= sharedPreferences.edit();
+     //  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+      //  editor= sharedPreferences.edit();
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void addToSharedPreferences(String selectedCountry) {
-        editor.putString(Constants.PREFERENCES_KEY_NEWS, selectedCountry).apply();
+     //   editor.putString(Constants.PREFERENCES_KEY_NEWS, selectedCountry).apply();
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

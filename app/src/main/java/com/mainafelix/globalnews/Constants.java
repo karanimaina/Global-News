@@ -6,4 +6,5 @@ public class Constants {
     public  static  final  String FIREBASE_CHILD_LIKED="liked";
     public static  final String  PREFERENCES_KEY_NEWS ="searchedCountries";
 
+
 }
