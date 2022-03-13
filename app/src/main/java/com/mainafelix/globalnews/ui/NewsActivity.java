@@ -9,11 +9,16 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.mainafelix.globalnews.Constants;
 import com.mainafelix.globalnews.models.OnFetchDataListener;
 import com.mainafelix.globalnews.R;
 import com.mainafelix.globalnews.network.RequestManager;
@@ -23,6 +28,8 @@ import com.mainafelix.globalnews.models.Article;
 import com.mainafelix.globalnews.models.NewsCollection;
 
 import java.util.List;
+
+import butterknife.ButterKnife;
 
 public class NewsActivity extends AppCompatActivity implements SelectListener, View.OnClickListener {
     RecyclerView recyclerView;
@@ -82,6 +89,28 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         b7.setOnClickListener(this);
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener,"general",null);
+    }
+    private void addToSharedPreferences(String searchednews) {
+        editor.putString(Constants.PREFERENCES_KEY_NEWS, searchednews).apply();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+        ButterKnife.bind(this);
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = sharedPreferences.edit();
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
     private final OnFetchDataListener<NewsCollection> listener = new OnFetchDataListener<NewsCollection>() {
         @Override
