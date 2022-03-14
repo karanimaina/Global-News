@@ -48,10 +48,10 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-       recentSearchedCountries =sharedPreferences.getString(Constants.PREFERENCES_KEY_NEWS,null);
-        Log.d("Shared Pref Location", recentSearchedCountries);
-         country = recentSearchedCountries;
+//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//       recentSearchedCountries =sharedPreferences.getString(Constants.PREFERENCES_KEY_NEWS,null);
+//        Log.d("Shared Pref Location", recentSearchedCountries);
+//         country = recentSearchedCountries;
         searchView = findViewById(R.id.search_view);
         Bundle extras = getIntent().getExtras();
 
@@ -59,7 +59,23 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
            country = extras.getString("country");
 
         }
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                dialog.setTitle("fetching news Articles of " + query);
+                dialog.show();
+                RequestManager manager = new RequestManager(NewsActivity.this);
+//                add country ;
+//                add category
+             manager.getNewsHeadlines(listener,"general",null,country);
+                return true;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
         dialog = new ProgressDialog(this);
         dialog.setTitle("Fetching news Articles");
         dialog.show();
@@ -133,29 +149,12 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         inflater.inflate(R.menu.menu_search, menu);
         ButterKnife.bind(this);
 
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        editor = sharedPreferences.edit();
+//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        editor = sharedPreferences.edit();
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
-        searchView =(SearchView) menuItem.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                addToSharedPreferences(country);
-                dialog.setTitle("fetching news Articles of " + query);
-                dialog.show();
-                RequestManager manager = new RequestManager(NewsActivity.this);
-//                add country ;
-//                add category
-                manager.getNewsHeadlines(listener,"general",null,country);
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
+//        SearchView searchView = (SearchView) menuItem.getActionView();
+//        searchView
 
 
         return true;
