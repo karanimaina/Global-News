@@ -22,8 +22,10 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="-13dp"
-        android:layout_marginTop="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-11dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="-5dp"
         android:adjustViewBounds="false"
         android:background="@drawable/available"
         android:scaleType="centerCrop"
@@ -51,13 +53,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="-2dp"
+        android:layout_marginStart="-52dp"
+        android:layout_marginEnd="-24dp"
+        android:layout_marginBottom="89dp"
+        android:background="@color/colorAccent"
         android:text="Find News"
         android:textColor="@color/black"
-        android:textStyle="italic"
-        android:background="@color/colorAccent"/>
+        android:textStyle="italic" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -66,11 +70,28 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="94dp"
-        android:layout_marginBottom="73dp"
-        android:spinnerMode="dropdown"
+        android:layout_marginStart="148dp"
+        android:layout_marginBottom="167dp"
         android:background="@color/white"
+        android:spinnerMode="dropdown"
         android:tooltipText="select country" />
+
+    <Button
+        android:id="@+id/savedNewsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="14dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/colorAccent"
+        android:text="My Saved News"
+        android:textColor="@color/colorTextIcons"
+        android:visibility="visible" />
     <!--<?xml version="1.0" encoding="utf-8"?>-->
     <!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
     <!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->

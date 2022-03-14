@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Spinner spinner;
     @BindView(R.id.findNewsButton)
     Button findNewsButton1;
+    @BindView(R.id.savedNewsButton)
+    Button savedNews;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private String selectedCountry ="";
@@ -104,6 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //add this
         findNewsButton1.setOnClickListener(this);
+        savedNews.setOnClickListener(this);
     }
 
     @Override
@@ -115,10 +118,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            if (!(selectedCountry).equals(null)){
 //                addToSharedPreferences(selectedCountry);
 //            }
+
             Intent intent = new Intent(this, NewsActivity.class);
            intent.putExtra("country", selectedCountry);
             startActivity(intent);
 
+        }
+        if (view == savedNews){
+            Intent intent = new Intent(MainActivity.this,savedNewsListActivity.class);
         }
     }
     public void saveCountryToFirebase(String selectedCountry) {

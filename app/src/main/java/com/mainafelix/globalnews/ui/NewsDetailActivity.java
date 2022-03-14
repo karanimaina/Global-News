@@ -49,6 +49,12 @@ public class NewsDetailActivity extends AppCompatActivity  implements View.OnCli
         txt_time .setText(headlines.getPublishedAt());
         Picasso.get().load(headlines.getUrlToImage()).into(img_news);
 
+        txt_title.setText(headlines.getTitle());
+        txt_author.setText(headlines.getAuthor());
+        txt_content.setText(headlines.getContent());
+        txt_detail.setText(headlines.getDescription());
+        txt_time .setText(headlines.getPublishedAt());
+        Picasso.get().load(headlines.getUrlToImage()).into(img_news);
 
 
     }
