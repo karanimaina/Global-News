@@ -43,20 +43,21 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    /**
-     * 
-     * @param publishedAt
-     * @param author
-     * @param urlToImage
-     * @param description
-     * @param source
-     * @param title
-     * @param url
-     * @param content
-     */
+
+
     public Article(Source source, String author, String title, String description, String url, String urlToImage, String publishedAt, String content) {
         super();
         this.source = source;
+        this.author = author;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.urlToImage = urlToImage;
+        this.publishedAt = publishedAt;
+        this.content = content;
+    }
+
+    public Article(String author, String title, String description, String url, String urlToImage, String publishedAt, String content) {
         this.author = author;
         this.title = title;
         this.description = description;

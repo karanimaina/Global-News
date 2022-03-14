@@ -21,11 +21,11 @@ import com.squareup.picasso.Picasso;
 
 public class NewsDetailActivity extends AppCompatActivity  implements View.OnClickListener{
     Article headlines;
-    TextView txt_title,txt_author,txt_time,txt_detail,txt_content;
+    TextView txt_title,txt_author,txt_time,txt_detail,txt_content,txt_url,txt_source;
     ImageView img_news;
     Button likedNews;
-    private SharedPreferences mSharedPreferences;
-    private SharedPreferences.Editor mEditor;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,24 +39,38 @@ public class NewsDetailActivity extends AppCompatActivity  implements View.OnCli
         img_news  = findViewById(R.id.img_detail_news);
         txt_time = findViewById(R.id.text_detail_time);
         likedNews = findViewById(R.id.Likebutton);
+        txt_url= findViewById(R.id.text_detail_url);
+        txt_source = findViewById(R.id.text_source);
 
         headlines = (Article) getIntent().getSerializableExtra("Data");
-
         txt_title.setText(headlines.getTitle());
         txt_author.setText(headlines.getAuthor());
+        txt_url.setText(headlines.getUrl());
+
         txt_content.setText(headlines.getContent());
         txt_detail.setText(headlines.getDescription());
         txt_time .setText(headlines.getPublishedAt());
         Picasso.get().load(headlines.getUrlToImage()).into(img_news);
 
-        txt_title.setText(headlines.getTitle());
-        txt_author.setText(headlines.getAuthor());
-        txt_content.setText(headlines.getContent());
-        txt_detail.setText(headlines.getDescription());
-        txt_time .setText(headlines.getPublishedAt());
-        Picasso.get().load(headlines.getUrlToImage()).into(img_news);
+       likedNews.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               firebaseDatabase = FirebaseDatabase.getInstance();
+               databaseReference = firebaseDatabase.getReference(Constants.FIREBASE_CHILD_LIKED);
 
+               String title = txt_title.getText().toString();
+              String author=  txt_author.getText().toString();
+              String url =  txt_url.getText().toString();
+              String content =  txt_content.getText().toString();
+               String description = txt_detail.getText().toString();
+               String time= txt_time. getText().toString();
+              String urlImage = img_news.toString();
+               Article article = new Article(author,title,description,url,urlImage,time,content);
+              databaseReference =firebaseDatabase.getReference(Constants.FIREBASE_CHILD_LIKED);
+              databaseReference.child(author).push().setValue(article);
 
+          }
+       });
     }
 
     @Override
