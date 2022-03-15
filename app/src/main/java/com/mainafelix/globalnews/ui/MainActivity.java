@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         if (view == savedNews){
             Intent intent = new Intent(MainActivity.this,savedNewsListActivity.class);
+            startActivity(intent);
         }
     }
     public void saveCountryToFirebase(String selectedCountry) {
