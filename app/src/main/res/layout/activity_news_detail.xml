@@ -33,7 +33,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/purple_500"
-                        android:textSize="26sp"
+                        android:textSize="20sp"
                         android:textStyle="bold">
 
                     </TextView>
@@ -41,7 +41,7 @@
                     <ImageView
                         android:id="@+id/img_detail_news"
                         android:layout_width="383dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="141dp"
                         android:layout_margin="8dp"
                         android:scaleType="fitXY"
                         android:src="@drawable/available">
@@ -50,6 +50,15 @@
 
                     <TextView
                         android:id="@+id/text_detail_author"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="6dp"
+                        android:textColor="@color/purple_700"
+                        android:textSize="16sp">
+
+                    </TextView>
+                    <TextView
+                        android:id="@+id/text_detail_source"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="6dp"
@@ -78,7 +87,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:textColor="@color/purple_500"
-                android:textSize="23sp">
+                android:textSize="18sp">
+
+            </TextView>
+            <TextView
+                android:id="@+id/text_detail_url"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="6dp"
+                android:textColor="@color/purple_700"
+                android:textSize="16sp">
 
             </TextView>
 
@@ -88,7 +106,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:textColor="@color/black"
-                android:textSize="20sp"></TextView>
+                android:textSize="20sp">
+
+            </TextView>
 
             <Button
                 android:id="@+id/Likebutton"
@@ -100,5 +120,4 @@
 
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

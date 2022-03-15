@@ -3,9 +3,11 @@ package com.mainafelix.globalnews.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.io.Serializable;
 
-
+@Parcel
 public class Article implements Serializable {
 
     @SerializedName("source")
@@ -32,6 +34,7 @@ public class Article implements Serializable {
     @SerializedName("content")
     @Expose
     private String content;
+    private String pushId;
 
     /**
      * No args constructor for use in serialization
@@ -40,20 +43,21 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    /**
-     * 
-     * @param publishedAt
-     * @param author
-     * @param urlToImage
-     * @param description
-     * @param source
-     * @param title
-     * @param url
-     * @param content
-     */
+
+
     public Article(Source source, String author, String title, String description, String url, String urlToImage, String publishedAt, String content) {
         super();
         this.source = source;
+        this.author = author;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.urlToImage = urlToImage;
+        this.publishedAt = publishedAt;
+        this.content = content;
+    }
+
+    public Article(String author, String title, String description, String url, String urlToImage, String publishedAt, String content) {
         this.author = author;
         this.title = title;
         this.description = description;
@@ -126,5 +130,14 @@ public class Article implements Serializable {
     public void setContent(String content) {
         this.content = content;
     }
+    public String getPushId() {
+        return pushId;
+    }
 
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 }
+
+
+

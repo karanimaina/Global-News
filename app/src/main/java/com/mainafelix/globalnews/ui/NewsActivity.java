@@ -7,12 +7,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.mainafelix.globalnews.Constants;
 import com.mainafelix.globalnews.models.OnFetchDataListener;
 import com.mainafelix.globalnews.R;
 import com.mainafelix.globalnews.network.RequestManager;
@@ -23,6 +30,8 @@ import com.mainafelix.globalnews.models.NewsCollection;
 
 import java.util.List;
 
+import butterknife.ButterKnife;
+
 public class NewsActivity extends AppCompatActivity implements SelectListener, View.OnClickListener {
     RecyclerView recyclerView;
     globalNewsAdapter adapter;
@@ -30,15 +39,27 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
     Button b1,b2,b3,b4,b5,b6,b7;
     SearchView searchView;
     Spinner spinner;
-    String country;
     String category;
+    String country = "";
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private String recentSearchedCountries;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
+//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//       recentSearchedCountries =sharedPreferences.getString(Constants.PREFERENCES_KEY_NEWS,null);
+//        Log.d("Shared Pref Location", recentSearchedCountries);
+//         country = recentSearchedCountries;
         searchView = findViewById(R.id.search_view);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        Bundle extras = getIntent().getExtras();
 
+        if (extras != null) {
+           country = extras.getString("country");
+
+        }
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 dialog.setTitle("fetching news Articles of " + query);
@@ -46,7 +67,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
                 RequestManager manager = new RequestManager(NewsActivity.this);
 //                add country ;
 //                add category
-             manager.getNewsHeadlines(listener,"general", query);
+             manager.getNewsHeadlines(listener,"general",null,country);
                 return true;
             }
 
@@ -55,9 +76,6 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
                 return false;
             }
         });
-//        Intent intent = getIntent();
-//        int positionToShowToSpinner = Integer.parseInt(intent.getStringExtra("position"));
-//        spinner.setSelection(positionToShowToSpinner);
         dialog = new ProgressDialog(this);
         dialog.setTitle("Fetching news Articles");
         dialog.show();
@@ -77,8 +95,9 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         b7 = findViewById( R.id.btn_7);
         b7.setOnClickListener(this);
         RequestManager manager = new RequestManager(this);
-        manager.getNewsHeadlines(listener,"general",null);
+        manager.getNewsHeadlines(listener,"general",null,country);
     }
+
     private final OnFetchDataListener<NewsCollection> listener = new OnFetchDataListener<NewsCollection>() {
         @Override
         public void OnFetchData(List<Article> list, String message) {
@@ -107,6 +126,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
     public void OnNewsClick(Article headlines) {
         startActivity(new Intent(NewsActivity.this, NewsDetailActivity.class)
                 .putExtra("Data",headlines)
+
         );
 
     }
@@ -118,7 +138,30 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         dialog.setTitle("fetching "+ category +" News ");
         dialog.show();
         RequestManager manager = new RequestManager(this);
-        manager.getNewsHeadlines(listener,category ,null);
+        manager.getNewsHeadlines(listener,category ,null,country);
+    }
+    private void addToSharedPreferences(String searchedNews) {
+        editor.putString(Constants.PREFERENCES_KEY_NEWS, searchedNews).apply();
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+        ButterKnife.bind(this);
 
+//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        editor = sharedPreferences.edit();
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+//        SearchView searchView = (SearchView) menuItem.getActionView();
+//        searchView
+
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

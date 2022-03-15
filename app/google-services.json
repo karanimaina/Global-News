@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "909626019694",
+    "firebase_url": "https://global-38cd5-default-rtdb.firebaseio.com",
+    "project_id": "global-38cd5",
+    "storage_bucket": "global-38cd5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909626019694:android:723a4bc17e80e899803b7f",
+        "android_client_info": {
+          "package_name": "com.mainafelix.globalnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "909626019694-1nifn3s3of85sf838pqecvbcn3j18n9q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8ibHtJA9hq5r7kSXI4buMcNFoDEubc6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "909626019694-1nifn3s3of85sf838pqecvbcn3j18n9q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
