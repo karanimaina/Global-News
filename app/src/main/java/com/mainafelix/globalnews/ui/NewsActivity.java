@@ -56,7 +56,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         Bundle extras = getIntent().getExtras();
 
         if (extras != null) {
-           country = extras.getString("country");
+            country = extras.getString("country");
 
         }
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -67,7 +67,7 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
                 RequestManager manager = new RequestManager(NewsActivity.this);
 //                add country ;
 //                add category
-             manager.getNewsHeadlines(listener,"general",null,country);
+                manager.getNewsHeadlines(listener,"general",null,country);
                 return true;
             }
 
@@ -149,12 +149,8 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         inflater.inflate(R.menu.menu_search, menu);
         ButterKnife.bind(this);
 
-//        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        editor = sharedPreferences.edit();
 
         MenuItem menuItem = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) menuItem.getActionView();
-//        searchView
 
 
         return true;

@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.savedNewsListActivity">
 
-    <!--ListView for displaying
-        our list of courses-->
+
     <ListView
         android:id="@+id/saved"
         android:layout_width="match_parent"

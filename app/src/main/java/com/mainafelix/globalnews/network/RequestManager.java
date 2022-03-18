@@ -58,4 +58,3 @@ public class RequestManager {
                 @Query("apiKey")String api_key);
     }
 }
-
