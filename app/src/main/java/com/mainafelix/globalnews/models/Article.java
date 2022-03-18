@@ -146,5 +146,5 @@ public class Article implements Serializable {
         this.index = index;
     }
 }
-}
+
 
