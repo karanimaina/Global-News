@@ -29,6 +29,13 @@ import butterknife.BindView;
 public class FirebaseNewsViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
     View view;
     Context context;
+    public ImageView img_news;
+    public TextView txt_author;
+    public TextView txt_title ;
+    public TextView txt_time;
+    public TextView txt_detail ;
+    public TextView txt_content;
+
 
     public FirebaseNewsViewholder(@NonNull View itemView) {
         super(itemView);
@@ -38,18 +45,21 @@ public class FirebaseNewsViewholder extends RecyclerView.ViewHolder implements V
     }
 
     public void bindNewsAricles(Article article) {
-        ImageView img_news =( ImageView)view.findViewById(R.id.imageView);
+        ImageView img_news =( ImageView)view.findViewById(R.id.NewsImageView);
         TextView txt_author= (TextView)view.findViewById(R.id.text_detail_author);
         TextView  txt_title =(TextView)view.findViewById (R.id.text_detail_title);
         TextView txt_time = ( TextView)view.findViewById (R.id.text_detail_time);
         TextView txt_detail = (TextView)view.findViewById(R.id.text_detail_detail) ;
         TextView txt_content  =(TextView)view.findViewById (R.id.text_detail_content);
+
+
         txt_title.setText(article.getTitle());
         txt_author.setText(article.getAuthor());
         txt_content.setText(article.getContent());
         txt_detail.setText(article.getDescription());
         txt_time .setText(article.getPublishedAt());
         Picasso.get().load(article.getUrlToImage()).into(img_news);
+
 
     }
     @Override

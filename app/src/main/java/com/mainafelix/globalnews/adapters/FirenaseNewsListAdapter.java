@@ -2,6 +2,7 @@ package com.mainafelix.globalnews.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -31,6 +32,15 @@ public class FirenaseNewsListAdapter extends FirebaseRecyclerAdapter<Article,Fir
     @Override
     protected void onBindViewHolder(@NonNull FirebaseNewsViewholder holder, int position, @NonNull Article model) {
       holder.bindNewsAricles(model);
+      holder.img_news.setOnTouchListener(new View.OnTouchListener() {
+          @Override
+          public boolean onTouch(View view, MotionEvent motionEvent) {
+              if (motionEvent.getActionMasked() == MotionEvent.ACTION_DOWN){
+                  onStartDragListener.onStartDrag(holder);
+              }
+              return  false;
+          }
+      });
     }
 
     @NonNull
@@ -42,13 +52,13 @@ public class FirenaseNewsListAdapter extends FirebaseRecyclerAdapter<Article,Fir
 
     @Override
     public boolean onItemMove(int fromPosition, int toPosition) {
+        notifyItemMoved(fromPosition, toPosition);
         return false;
     }
 
     @Override
     public void onItemDismiss(int position) {
-
+        getRef(position).removeValue();
     }
 }
-
 
