@@ -17,12 +17,15 @@ To add a sample app to a Firebase project, use the applicationId value specified
 <li>Open the project</li>
 
 ## BDD
-<li>On the test change the run method  to main activty test and run the test</li>
+<li>change the run method to Application</li>
 <li>Setup the emulator either as your phone by enabling the usb debugging in your developer settings or by using a custom  AVD device</li>
 <li>confirm that all tests do pass</li>
-<li>change it to instrumentation tests , confirm that the test do pass</li>
-<li>change it to App , run  it , enter some text on the activity that shows i  and clck on the find news BUtton</li>
-<li> an activity opens and you are able to see  th hard coded News </li>
+<li>You are presented with a login page, click  create account to create an account for this application, click enter and the app navigates to the home activity</li>
+<li>on the home page in th app bar section yo will see a text of "Welcome + yourName!" this means you are sucesfully logged into the application </li>
+<li>down below there is a spinner with countries initials, select your preffered  country and click the button Find News, the app navigates to the News List Activity, </li>
+<li>In the news list activity scroll down to see the general news , you can click on the category that you ae interested in , you can also query specific news , containing  a specific keyword, to see more details about a specific news click on that news that matches your interests, the app navigates to the news detail Activity</li>
+<li>on the news detail Activity, you will get to see the title , the image , the url, the source, the cntent and a small brief descriptiion about that sspecific article </li>
+<li>down below there is a like button, click on that button to save that news , click on the back button back to the homepage and  click on the saved news and you get to see the news that you saved </li>
 
 ## Tests
 run the main actvity test, this tests on the App name and perform on click method that moves you to the next activity.
