@@ -52,37 +52,35 @@ public class NewsDetailActivity extends AppCompatActivity  implements View.OnCli
         txt_time .setText(headlines.getPublishedAt());
         Picasso.get().load(headlines.getUrlToImage()).into(img_news);
 
-       likedNews.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               firebaseDatabase = FirebaseDatabase.getInstance();
-               databaseReference = firebaseDatabase.getReference(Constants.FIREBASE_CHILD_LIKED);
+        likedNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseDatabase = FirebaseDatabase.getInstance();
+                databaseReference = firebaseDatabase.getReference(Constants.FIREBASE_CHILD_LIKED);
 
-               String title = txt_title.getText().toString();
-              String author=  txt_author.getText().toString();
-              String url =  txt_url.getText().toString();
-              String content =  txt_content.getText().toString();
-               String description = txt_detail.getText().toString();
-               String time= txt_time. getText().toString();
-              String urlImage = img_news.toString();
-               Article article = new Article(author,title,description,url,urlImage,time,content);
-              databaseReference =firebaseDatabase.getReference(Constants.FIREBASE_CHILD_LIKED);
-              databaseReference.child(author).push().setValue(article);
+                String title = txt_title.getText().toString();
+                String author=  txt_author.getText().toString();
+                String url =  txt_url.getText().toString();
+                String content =  txt_content.getText().toString();
+                String description = txt_detail.getText().toString();
+                String time= txt_time. getText().toString();
+                String urlImage = img_news.toString();
+                Article article = new Article(author,title,description,url,urlImage,time,content);
+                databaseReference =firebaseDatabase.getReference(Constants.FIREBASE_CHILD_LIKED);
+                databaseReference.child(author).push().setValue(article);
 
-          }
-       });
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
-  if (view == likedNews ){
-      DatabaseReference databaseReference = FirebaseDatabase
-              .getInstance().getReference(Constants.FIREBASE_CHILD_LIKED);
-      databaseReference.push().setValue(headlines);
-      Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+        if (view == likedNews ){
+            DatabaseReference databaseReference = FirebaseDatabase
+                    .getInstance().getReference(Constants.FIREBASE_CHILD_LIKED);
+            databaseReference.push().setValue(headlines);
+            Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
 
-  }
+        }
     }
 }
-
-

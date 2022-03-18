@@ -42,7 +42,7 @@ public class savedNewsListActivity extends AppCompatActivity implements SelectLi
     DatabaseReference newsReference;
     private FirebaseRecyclerAdapter<Article, FirebaseNewsViewholder> firebaseAdapter;
 
-   private ListView ListSavedNews;
+    private ListView ListSavedNews;
     ArrayList<Article>headlines;
 
     @Override
@@ -63,35 +63,35 @@ public class savedNewsListActivity extends AppCompatActivity implements SelectLi
         newsReference =FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_LIKED);
 
 
+newsReference.addValueEventListener(new ValueEventListener() {
+    @Override
+    public void onDataChange(@NonNull DataSnapshot snapshot) {
+        for (DataSnapshot dataSnapshot : snapshot.getChildren()){
 
-        newsReference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                headlines.add(snapshot.getValue(Article.class));
-                adapter.notifyDataSetChanged();
-            }
+        }
+    }
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+    @Override
+    public void onCancelled(@NonNull DatabaseError error) {
+
+    }
+});
+newsReference.addValueEventListener(new ValueEventListener() {
+    @Override
+    public void onDataChange(@NonNull DataSnapshot snapshot) {
+        headlines.clear();
+        for (DataSnapshot dataSnapshot :snapshot.getChildren()){
+            Article artics = dataSnapshot.getValue(Article.class);
+            headlines.add(artics);
             adapter.notifyDataSetChanged();
-            }
+    }}
 
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-            headlines.remove(snapshot.getValue(Article.class));
-            adapter.notifyDataSetChanged();
-            }
+    @Override
+    public void onCancelled(@NonNull DatabaseError error) {
 
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+    }
+});
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         ListSavedNews.setAdapter(adapter);
 
     }
@@ -101,4 +101,3 @@ public class savedNewsListActivity extends AppCompatActivity implements SelectLi
 
     }
 }
-

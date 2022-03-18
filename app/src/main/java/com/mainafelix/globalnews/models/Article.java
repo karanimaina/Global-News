@@ -1,4 +1,3 @@
-
 package com.mainafelix.globalnews.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -38,7 +37,7 @@ public class Article implements Serializable {
 
     /**
      * No args constructor for use in serialization
-     * 
+     *
      */
     public Article() {
     }
@@ -138,6 +137,4 @@ public class Article implements Serializable {
         this.pushId = pushId;
     }
 }
-
-
 

@@ -27,8 +27,8 @@ import java.util.ArrayList;
 import butterknife.BindView;
 
 public class FirebaseNewsViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
-   View view;
-   Context context;
+    View view;
+    Context context;
 
     public FirebaseNewsViewholder(@NonNull View itemView) {
         super(itemView);
@@ -38,31 +38,31 @@ public class FirebaseNewsViewholder extends RecyclerView.ViewHolder implements V
     }
 
     public void bindNewsAricles(Article article) {
-         ImageView img_news =( ImageView)view.findViewById(R.id.imageView);
-       TextView txt_author= (TextView)view.findViewById(R.id.text_detail_author);
+        ImageView img_news =( ImageView)view.findViewById(R.id.imageView);
+        TextView txt_author= (TextView)view.findViewById(R.id.text_detail_author);
         TextView  txt_title =(TextView)view.findViewById (R.id.text_detail_title);
-       TextView txt_time = ( TextView)view.findViewById (R.id.text_detail_time);
+        TextView txt_time = ( TextView)view.findViewById (R.id.text_detail_time);
         TextView txt_detail = (TextView)view.findViewById(R.id.text_detail_detail) ;
-         TextView txt_content  =(TextView)view.findViewById (R.id.text_detail_content);
+        TextView txt_content  =(TextView)view.findViewById (R.id.text_detail_content);
         txt_title.setText(article.getTitle());
         txt_author.setText(article.getAuthor());
-       txt_content.setText(article.getContent());
-       txt_detail.setText(article.getDescription());
-       txt_time .setText(article.getPublishedAt());
-       Picasso.get().load(article.getUrlToImage()).into(img_news);
+        txt_content.setText(article.getContent());
+        txt_detail.setText(article.getDescription());
+        txt_time .setText(article.getPublishedAt());
+        Picasso.get().load(article.getUrlToImage()).into(img_news);
 
     }
     @Override
     public void onClick(View view) {
-   final ArrayList<Article>articles = new ArrayList<>();
+        final ArrayList<Article>articles = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_LIKED);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
-           @Override
+            @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-               for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     articles.add(snapshot.getValue(Article.class));
                 }
-               int  itemPosition = getLayoutPosition();
+                int  itemPosition = getLayoutPosition();
                 Intent intent = new Intent(context, NewsDetailActivity.class);
                 intent.putExtra("position",itemPosition + "");
 

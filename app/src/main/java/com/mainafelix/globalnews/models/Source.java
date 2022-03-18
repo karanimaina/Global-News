@@ -1,4 +1,3 @@
-
 package com.mainafelix.globalnews.models;
 
 import com.google.gson.annotations.Expose;
@@ -20,13 +19,13 @@ public class Source implements Serializable {
 
     /**
      * No args constructor for use in serialization
-     * 
+     *
      */
     public Source() {
     }
 
     /**
-     * 
+     *
      * @param name
      * @param id
      */

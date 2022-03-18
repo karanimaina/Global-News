@@ -84,13 +84,13 @@
 
     </androidx.cardview.widget.CardView>
     f<androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view"
-        app:defaultQueryHint="search News....."
-        app:iconifiedByDefault="false"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize">
+    android:id="@+id/search_view"
+    app:defaultQueryHint="search News....."
+    app:iconifiedByDefault="false"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize">
 
-    </androidx.appcompat.widget.SearchView>
+</androidx.appcompat.widget.SearchView>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_main"
         android:layout_margin="8dp"
@@ -109,7 +109,7 @@
         android:layout_margin="16dp"
         android:visibility="gone" />
 
-<!---->
+    <!---->
 
 
 

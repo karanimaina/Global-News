@@ -1,4 +1,3 @@
-
 package com.mainafelix.globalnews.models;
 
 import java.io.Serializable;
@@ -24,13 +23,13 @@ public class NewsCollection implements Serializable {
 
     /**
      * No args constructor for use in serialization
-     * 
+     *
      */
     public NewsCollection() {
     }
 
     /**
-     * 
+     *
      * @param totalResults
      * @param articles
      * @param status

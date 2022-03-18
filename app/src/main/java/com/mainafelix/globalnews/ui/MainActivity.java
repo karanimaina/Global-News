@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ProgressDialog dialog;
     Button b1, b2, b3, b4, b5, b6, b7;
     SearchView searchView;
-   @BindView(R.id.spinner)
+    @BindView(R.id.spinner)
     Spinner spinner;
     @BindView(R.id.findNewsButton)
     Button findNewsButton1;
@@ -52,15 +52,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private String selectedCountry ="";
-  //  private SharedPreferences sharedPreferences;
-   // private SharedPreferences.Editor editor;
+    //  private SharedPreferences sharedPreferences;
+    // private SharedPreferences.Editor editor;
     private DatabaseReference databaseReference;
     private ValueEventListener NewsValueEventListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         databaseReference = FirebaseDatabase
                 .getInstance().getReference().child(Constants.PREFERENCES_KEY_NEWS);
-       NewsValueEventListener= databaseReference.addValueEventListener(new ValueEventListener() {
+        NewsValueEventListener= databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot newsSnapshot : snapshot.getChildren()){
@@ -78,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-     //  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-      //  editor= sharedPreferences.edit();
+        //  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        //  editor= sharedPreferences.edit();
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            }
 
             Intent intent = new Intent(this, NewsActivity.class);
-           intent.putExtra("country", selectedCountry);
+            intent.putExtra("country", selectedCountry);
             startActivity(intent);
 
         }
@@ -130,10 +130,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     public void saveCountryToFirebase(String selectedCountry) {
-       databaseReference.push().setValue(selectedCountry);
+        databaseReference.push().setValue(selectedCountry);
     }
 
-//    private void addToSharedPreferences(String selectedCountry) {
+    //    private void addToSharedPreferences(String selectedCountry) {
 //     //   editor.putString(Constants.PREFERENCES_KEY_NEWS, selectedCountry).apply();
 //    }
     @Override
@@ -177,4 +177,3 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 }
-
