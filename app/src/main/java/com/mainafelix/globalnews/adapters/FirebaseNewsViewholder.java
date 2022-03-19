@@ -2,6 +2,7 @@ package com.mainafelix.globalnews.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.mainafelix.globalnews.Constants;
 import com.mainafelix.globalnews.R;
 import com.mainafelix.globalnews.models.Article;
+import com.mainafelix.globalnews.ui.ItemTouchHelperViewHolder;
 import com.mainafelix.globalnews.ui.NewsDetailActivity;
 import com.squareup.picasso.Picasso;
 
@@ -26,7 +28,7 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 
-public class FirebaseNewsViewholder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseNewsViewholder extends RecyclerView.ViewHolder implements View.OnClickListener, ItemTouchHelperViewHolder  {
     View view;
     Context context;
     public ImageView img_news;
@@ -35,6 +37,9 @@ public class FirebaseNewsViewholder extends RecyclerView.ViewHolder implements V
     public TextView txt_time;
     public TextView txt_detail ;
     public TextView txt_content;
+    private static final int MAX_WIDTH = 200;
+    private static final int MAX_HEIGHT = 200;
+
 
 
     public FirebaseNewsViewholder(@NonNull View itemView) {
@@ -86,4 +91,22 @@ public class FirebaseNewsViewholder extends RecyclerView.ViewHolder implements V
             }
         });
     }
+
+    @Override
+    public void onItemSelected() {
+        itemView.animate()
+                .alpha(0.7f)
+                .scaleX(0.9f)
+                .scaleY(0.9f)
+                .setDuration(500);
+    }
+
+    @Override
+    public void onItemClear() {
+        itemView.animate()
+                .alpha(1f)
+                .scaleX(1f)
+                .scaleY(1f);
+    }
+
 }
