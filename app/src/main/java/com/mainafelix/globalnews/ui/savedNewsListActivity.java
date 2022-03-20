@@ -348,6 +348,8 @@ package com.mainafelix.globalnews.ui;//package com.mainafelix.globalnews.ui;//pa
 
 import android.os.Bundle;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -366,6 +368,8 @@ import com.mainafelix.globalnews.adapters.MyAdapter;
 import com.mainafelix.globalnews.models.Article;
 
 import java.util.ArrayList;
+
+import butterknife.BindAnim;
 
 public  class savedNewsListActivity extends AppCompatActivity {
 RecyclerView recyclerView;
@@ -392,7 +396,9 @@ ArrayList<Article>articleArrayList;
                 articleArrayList.clear();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Article article = dataSnapshot.getValue(Article.class);
-                    articleArrayList.add(article);
+                     articleArrayList.add(article);
+                    shakeAnimation();
+
                 }
                 myAdapter.notifyDataSetChanged();
             }
@@ -402,6 +408,12 @@ ArrayList<Article>articleArrayList;
 
             }
         });
+
+
+    }
+    private void shakeAnimation(){
+        Animation shake= AnimationUtils.loadAnimation(savedNewsListActivity.this,R.anim.shake_animation);
+        recyclerView.setAnimation(shake);
 
     }
 }
