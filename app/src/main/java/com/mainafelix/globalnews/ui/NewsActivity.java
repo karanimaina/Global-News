@@ -148,10 +148,8 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_search, menu);
         ButterKnife.bind(this);
-
-
         MenuItem menuItem = menu.findItem(R.id.action_search);
-
+        overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
 
         return true;
     }
