@@ -78,13 +78,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        //  sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        //  editor= sharedPreferences.edit();
+
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                //display welcome message
+
             }
         };
         mAuth = FirebaseAuth.getInstance();

@@ -13,7 +13,8 @@
         android:theme="@style/Theme.GlobalNews">
         <activity
             android:name=".ui.savedNewsListActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".ui.LoginActivity"
             android:exported="true">
