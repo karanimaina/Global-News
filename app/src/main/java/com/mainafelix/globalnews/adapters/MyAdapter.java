@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mainafelix.globalnews.R;
 import com.mainafelix.globalnews.models.Article;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -40,7 +42,7 @@ ArrayList<Article>list;
       holder.content.setText(article.getContent());
       holder.description.setText(article.getDescription());
       holder.url.setText(article.getUrl());
-      holder.imageUrl.setText(article.getUrlToImage());
+      Picasso.get().load(article.getUrlToImage()).into(holder.imageUrl);
     }
 
     @Override
@@ -49,7 +51,8 @@ ArrayList<Article>list;
     }
 
     public static class MyviewHolder extends  RecyclerView.ViewHolder{
-                TextView title,author ,url,description,imageUrl,content,publish;
+                TextView title,author ,url,description,content,publish;
+                ImageView imageUrl;
         public MyviewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.titlename);

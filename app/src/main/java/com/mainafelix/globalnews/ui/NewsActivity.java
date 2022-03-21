@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -36,11 +37,13 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
     RecyclerView recyclerView;
     globalNewsAdapter adapter;
     ProgressDialog dialog;
-    Button b1,b2,b3,b4,b5,b6,b7;
+    Button b1,b2,b3,b4,b5,b6,b7,port,land;
     SearchView searchView;
     Spinner spinner;
     String category;
     String country = "";
+
+
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private String recentSearchedCountries;
@@ -94,8 +97,23 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
         b6.setOnClickListener(this);
         b7 = findViewById( R.id.btn_7);
         b7.setOnClickListener(this);
+        port = findViewById(R.id.portrait);
+        land = findViewById(R.id.LandScape);
         RequestManager manager = new RequestManager(this);
         manager.getNewsHeadlines(listener,"general",null,country);
+        port.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
+        });
+        land.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            }
+        });
+
     }
 
     private final OnFetchDataListener<NewsCollection> listener = new OnFetchDataListener<NewsCollection>() {
@@ -158,4 +176,5 @@ public class NewsActivity extends AppCompatActivity implements SelectListener, V
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
     }
+
 }

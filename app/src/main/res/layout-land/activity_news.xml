@@ -31,14 +31,6 @@
                 android:layout_height="wrap_content">
 
             </Button>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="14dp">
-
-            </androidx.cardview.widget.CardView>
-
             <Button
                 android:id="@+id/btn_3"
                 android:text="general"
@@ -85,10 +77,13 @@
             </Button>
         </LinearLayout>
     </HorizontalScrollView>
+    <androidx.cardview.widget.CardView
+        android:layout_margin="14dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    f
-
-    <androidx.appcompat.widget.SearchView
+    </androidx.cardview.widget.CardView>
+    f<androidx.appcompat.widget.SearchView
     android:id="@+id/search_view"
     app:defaultQueryHint="search News....."
     app:iconifiedByDefault="false"
@@ -110,9 +105,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-                android:text="Land" />
+            android:text="Land" />
     </LinearLayout>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_main"
         android:layout_margin="8dp"
