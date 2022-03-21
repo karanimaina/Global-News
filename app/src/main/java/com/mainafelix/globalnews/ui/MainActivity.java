@@ -5,6 +5,7 @@ package com.mainafelix.globalnews.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     Button findNewsButton1;
     @BindView(R.id.savedNewsButton)
     Button savedNews;
+    Button port,land;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private String selectedCountry ="";
@@ -104,6 +106,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         spinner.setAdapter(adapter);
 
 //add this
+        port = findViewById(R.id.portraitMain);
+        land = findViewById(R.id.LandScapeMain);
+        port.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            }
+        });
+        land.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            }
+        });
         findNewsButton1.setOnClickListener(this);
         savedNews.setOnClickListener(this);
     }

@@ -94,15 +94,17 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <Button
             android:id="@+id/portrait"
-            android:layout_width="wrap_content"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="portrait" />
+
         <Button
             android:id="@+id/LandScape"
-            android:layout_width="wrap_content"
+            android:layout_width="425dp"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="Land" />

@@ -13,7 +13,6 @@
         android:layout_marginLeft="16dp"
         android:orientation="vertical"
         android:background="@color/colorDivider">
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,9 +60,9 @@
                 android:id="@+id/imageURl"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
                 android:layout_weight="1"
-                android:src="@drawable/available"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/available" />
         </LinearLayout>
 
         <LinearLayout
